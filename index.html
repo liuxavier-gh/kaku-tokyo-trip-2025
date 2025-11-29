@@ -154,95 +154,38 @@
             position: relative;
             z-index: 1;
         }
-        
         .travel-time-badge {
-            background-color: #EAECEE;
-            color: #5D6D7E;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 6px 16px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 2px solid var(--bg-color);
+            background-color: #EAECEE; color: #5D6D7E; font-size: 0.75rem; font-weight: bold;
+            padding: 6px 16px; border-radius: 20px; display: flex; align-items: center; gap: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid var(--bg-color);
         }
-        
         .travel-line {
-            position: absolute;
-            top: -20px;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
+            position: absolute; top: -20px; bottom: 0; left: 50%; width: 2px;
             background-image: linear-gradient(to bottom, #ccc 50%, rgba(255,255,255,0) 0%);
-            background-position: left;
-            background-size: 2px 10px;
-            background-repeat: repeat-y;
-            z-index: -1;
+            background-position: left; background-size: 2px 10px; background-repeat: repeat-y; z-index: -1;
         }
 
         /* --- NOTEBOOK STYLES --- */
         .form-card {
             background: white; padding: 20px; border-radius: var(--radius);
             box-shadow: var(--shadow); margin-bottom: 30px;
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
+            border: 2px solid transparent; transition: border-color 0.3s;
         }
-        .form-card.editing {
-            border-color: var(--btn-edit);
-        }
-        
+        .form-card.editing { border-color: var(--btn-edit); }
         .form-group { margin-bottom: 15px; }
         .form-label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #555; }
         .form-control { width: 100%; padding: 12px; border: 1px solid #eee; border-radius: 8px; font-size: 0.95rem; background: #fafafa; }
         
         .note-list-item {
-            background: white;
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.03);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.1s;
-            cursor: pointer;
-            border-bottom: 1px solid #f0f0f0;
+            background: white; border-radius: 10px; padding: 12px 15px; margin-bottom: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.03); display: flex; align-items: center; gap: 8px;
+            transition: transform 0.1s; cursor: pointer; border-bottom: 1px solid #f0f0f0;
         }
         .note-list-item:active { transform: scale(0.99); background: #f9f9f9; }
-        
-        .note-title-text {
-            flex-grow: 1;
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: #333;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .note-tag-badge {
-            font-size: 0.65rem;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        
-        .note-location-text {
-            font-size: 0.75rem;
-            color: #999;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .note-action-icon { 
-            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-size: 0.9rem; flex-shrink: 0; margin-left: 2px;
-        }
+        .note-title-text { flex-grow: 1; font-size: 0.95rem; font-weight: bold; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .note-tag-badge { font-size: 0.65rem; color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; flex-shrink: 0; }
+        .note-location-text { font-size: 0.75rem; color: #999; flex-shrink: 0; display: flex; align-items: center; }
+        .note-action-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; margin-left: 2px; }
         .note-nav-icon { background: #E8F5E9; color: var(--btn-map); }
         .note-edit-icon { background: #EBF5FB; color: var(--btn-edit); }
         .note-delete-icon { background: #FDEDEC; color: var(--tag-todo); }
@@ -294,48 +237,15 @@
         .modal-subtitle i { margin-right:8px; }
 
         /* --- MAINTENANCE MODE --- */
-        .maintenance-container {
-            text-align: center;
-            padding-top: 100px;
-            padding-bottom: 40px;
-            color: #95A5A6;
-        }
-        .maintenance-icon-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+        .maintenance-container { text-align: center; padding-top: 100px; padding-bottom: 40px; color: #95A5A6; }
+        .maintenance-icon-wrapper { position: relative; display: inline-block; margin-bottom: 20px; }
         .maintenance-main-icon { font-size: 5rem; color: #BDC3C7; }
-        .maintenance-sub-icon {
-            font-size: 2.5rem;
-            position: absolute;
-            bottom: -10px;
-            right: -10px;
-            color: #F39C12;
-            background: #fff;
-            border-radius: 50%;
-            padding: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        .maintenance-sub-icon { font-size: 2.5rem; position: absolute; bottom: -10px; right: -10px; color: #F39C12; background: #fff; border-radius: 50%; padding: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-        /* --- USAGI GIF ANIMATION --- */
-        .usagi-patrol {
-            position: fixed;
-            bottom: 80px;
-            left: -100px;
-            width: 80px;
-            z-index: 9999;
-            pointer-events: none;
-            animation: usagiRun 15s linear infinite;
-        }
+        /* --- USAGI GIF --- */
+        .usagi-patrol { position: fixed; bottom: 80px; left: -100px; width: 80px; z-index: 9999; pointer-events: none; animation: usagiRun 15s linear infinite; }
         .usagi-patrol img { width: 100%; height: auto; display: block; }
-        @keyframes usagiRun {
-            0% { left: -100px; transform: scaleX(-1); }
-            45% { left: 100%; transform: scaleX(-1); }
-            50% { left: 100%; transform: scaleX(1); }
-            95% { left: -100px; transform: scaleX(1); }
-            100% { left: -100px; transform: scaleX(-1); }
-        }
+        @keyframes usagiRun { 0% { left: -100px; transform: scaleX(-1); } 45% { left: 100%; transform: scaleX(-1); } 50% { left: 100%; transform: scaleX(1); } 95% { left: -100px; transform: scaleX(1); } 100% { left: -100px; transform: scaleX(-1); } }
 
         /* --- BOTTOM NAV --- */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-around; padding: 15px 0 25px 0; border-top: 1px solid rgba(0,0,0,0.05); z-index: 999; }
@@ -357,45 +267,64 @@
     <header>
         <div class="trip-title">TOKYO TRIP 2025</div>
         <h2 style="text-align:center; margin:0 0 15px 0; font-size:1.2rem; font-weight:bold;">烏拉呀哈東京迷路大作戰</h2>
-        
         <div id="date-nav-container" class="date-scroller">
-            <div class="date-item active" onclick="switchDay('day1', this)">
-                <span class="day-name">WED</span>
-                <span class="day-num">10</span>
-            </div>
-            <div class="date-item" onclick="switchDay('day2', this)">
-                <span class="day-name">THU</span>
-                <span class="day-num">11</span>
-            </div>
-            <div class="date-item" onclick="switchDay('day3', this)">
-                <span class="day-name">FRI</span>
-                <span class="day-num">12</span>
-            </div>
-            <div class="date-item" onclick="switchDay('day4', this)">
-                <span class="day-name">SAT</span>
-                <span class="day-num">13</span>
-            </div>
-            <div class="date-item" onclick="switchDay('day5', this)">
-                <span class="day-name">SUN</span>
-                <span class="day-num">14</span>
-            </div>
+            <div class="date-item active" onclick="switchDay('day1', this)"><span class="day-name">WED</span><span class="day-num">10</span></div>
+            <div class="date-item" onclick="switchDay('day2', this)"><span class="day-name">THU</span><span class="day-num">11</span></div>
+            <div class="date-item" onclick="switchDay('day3', this)"><span class="day-name">FRI</span><span class="day-num">12</span></div>
+            <div class="date-item" onclick="switchDay('day4', this)"><span class="day-name">SAT</span><span class="day-num">13</span></div>
+            <div class="date-item" onclick="switchDay('day5', this)"><span class="day-name">SUN</span><span class="day-num">14</span></div>
         </div>
     </header>
 
     <div id="tab-itinerary" class="tab-content active container">
         <div id="day1" class="day-view active">
-            <div class="weather-scroll-container"><div class="weather-title">東京/箱根・今日預報</div><div class="weather-scroll"><div class="weather-hour"><span>09:00</span><i class="fas fa-cloud-sun"></i><span>15°</span></div><div class="weather-hour"><span>12:00</span><i class="fas fa-sun"></i><span>17°</span></div></div></div>
+            <div class="weather-scroll-container"><div class="weather-title">東京/箱根・今日預報</div><div class="weather-scroll"><div class="weather-hour"><span>09:00</span><i class="fas fa-cloud-sun"></i><span>15°</span></div><div class="weather-hour"><span>12:00</span><i class="fas fa-sun"></i><span>17°</span></div><div class="weather-hour"><span>15:00</span><i class="fas fa-sun"></i><span>16°</span></div></div></div>
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 溫暖的家</div>
             <div class="timeline-card"><img src="https://s.yimg.com/ny/api/res/1.2/erw10hmX9ybLRm4lB7pP.A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MTtjZj13ZWJw/https://media.zenfs.com/ko/taisounds_com_380/25ef305fcce02ba63c43f73dae765b52" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-plane"></i> FLIGHT 09:30</div><h3 class="card-title">桃園 -> 東京成田</h3><div class="highlight-box"><div class="highlight-text">06:30 於桃園機場第二航廈華航櫃台集合。</div></div></div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>午餐：</strong> 機上套餐</div>
-            <div class="timeline-card"><img src="https://ak-d.tripcdn.com/images/100w060000001rrhtEE7E_R_750_520.jpg_.webp?_fr=wc" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-shopping-bag"></i> SHOPPING</div><h3 class="card-title">箱根湯本商店街散策</h3><div class="card-subtitle">抵達箱根後的第一站</div><div class="shop-list"><div class="shop-item"><img src="https://images.unsplash.com/photo-1601205741712-b261aff33a7d?auto=format&fit=crop&w=200&q=80" class="shop-thumb"><div class="shop-info"><div class="shop-name">菊川商店</div><div class="shop-desc">長崎蛋糕饅頭</div></div><a href="https://www.google.com/maps/search/?api=1&query=Kikukawa+Shoten+Hakone" target="_blank" class="shop-nav"><i class="fas fa-location-arrow"></i></a></div><div class="shop-item"><img src="https://muzi.com.tw/wp-content/uploads/2024/05/%E7%AE%B1%E6%A0%B9%E4%BC%B4%E6%89%8B%E7%A6%AE1.jpg" class="shop-thumb"><div class="shop-info"><div class="shop-name">湯麻糬</div><div class="shop-desc">軟嫩柚子香</div></div><a href="https://www.google.com/maps/search/?api=1&query=Chimoto+Hakone" target="_blank" class="shop-nav"><i class="fas fa-location-arrow"></i></a></div></div></div></div>
-            <div class="timeline-card"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL</div><h3 class="card-title" onclick="showDetail('tenseien')">箱根天成園 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="action-buttons"><a href="https://maps.google.com/?q=箱根天成園" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航至飯店</a></div></div></div>
+            <div class="timeline-card"><img src="https://ak-d.tripcdn.com/images/100w060000001rrhtEE7E_R_750_520.jpg_.webp?_fr=wc" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-shopping-bag"></i> SHOPPING</div><h3 class="card-title">箱根湯本商店街散策</h3><div class="card-subtitle">抵達箱根後的第一站</div><div class="shop-list"><div class="shop-item"><img src="https://images.unsplash.com/photo-1601205741712-b261aff33a7d?auto=format&fit=crop&w=200&q=80" class="shop-thumb"><div class="shop-info"><div class="shop-name">菊川商店</div><div class="shop-desc">長崎蛋糕饅頭</div></div><a href="https://www.google.com/maps/search/?api=1&query=Kikukawa+Shoten+Hakone" target="_blank" class="shop-nav"><i class="fas fa-location-arrow"></i></a></div><div class="shop-item"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=200&q=80" class="shop-thumb"><div class="shop-info"><div class="shop-name">手燒堂 (愛心仙貝)</div><div class="shop-desc">炭火現烤的醬油仙貝</div></div><a href="https://www.google.com/maps/search/?api=1&query=Teyakido+Hakone" target="_blank" class="shop-nav"><i class="fas fa-location-arrow"></i></a></div><div class="shop-item"><img src="https://muzi.com.tw/wp-content/uploads/2024/05/%E7%AE%B1%E6%A0%B9%E4%BC%B4%E6%89%8B%E7%A6%AE5.jpg" class="shop-thumb"><div class="shop-info"><div class="shop-name">箱根 Rusk</div><div class="shop-desc">推薦焦糖杏仁口味</div></div><a href="https://www.google.com/maps/search/?api=1&query=Grande+Riviere+Hakone+Yumoto" target="_blank" class="shop-nav"><i class="fas fa-location-arrow"></i></a></div><div class="shop-item"><img src="https://muzi.com.tw/wp-content/uploads/2024/05/%E7%AE%B1%E6%A0%B9%E4%BC%B4%E6%89%8B%E7%A6%AE1.jpg" class="shop-thumb"><div class="shop-info"><div class="shop-name">湯麻糬</div><div class="shop-desc">軟嫩柚子香</div></div><a href="https://www.google.com/maps/search/?api=1&query=Chimoto+Hakone" target="_blank" class="shop-nav"><i class="fas fa-location-arrow"></i></a></div></div></div></div>
+            <div class="timeline-card"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL</div><h3 class="card-title" onclick="showDetail('tenseien')">箱根天成園 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="card-subtitle">Hakone Tenseien</div><div class="recommendation-box"><img src="https://muzi.com.tw/wp-content/uploads/2024/05/%E7%AE%B1%E6%A0%B9%E4%BC%B4%E6%89%8B%E7%A6%AE3.jpg" class="rec-img"><div class="rec-text"><h4>順路必吃：箱根饅頭</h4><p>箱根湯本車站前的商店街有現蒸的溫泉饅頭。</p></div></div><div class="cvs-box"><div class="cvs-title"><i class="fas fa-store" style="margin-right:6px; color:#F39C12;"></i> 附近便利商店 (補給站)</div><div class="cvs-item"><div class="cvs-info"><div>Lawson 箱根湯本店</div><span style="color:#C0392B;">營業時間：07:00 - 22:00 (非24h)</span></div><a href="https://www.google.com/maps/search/?api=1&query=Lawson+Hakone+Yumoto" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div><div class="cvs-item"><div class="cvs-info"><div>7-Eleven 箱根湯本駅前店</div><span style="color:#27AE60;">營業時間：24小時</span></div><a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Hakone+Yumoto+Station" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div></div><div class="action-buttons"><a href="https://maps.google.com/?q=箱根天成園" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航至飯店</a></div></div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 會席料理 - 晚宴</div>
         </div>
-        <div id="day2" class="day-view"><div class="timeline-card"><div class="card-content"><h3 class="card-title">Day 2 (同前略)</h3></div></div></div>
-        <div id="day3" class="day-view"><div class="timeline-card"><div class="card-content"><h3 class="card-title">Day 3 (同前略)</h3></div></div></div>
-        <div id="day4" class="day-view"><div class="timeline-card"><div class="card-content"><h3 class="card-title">Day 4 (同前略)</h3></div></div></div>
-        <div id="day5" class="day-view"><div class="timeline-card"><div class="card-content"><h3 class="card-title">Day 5 (同前略)</h3></div></div></div>
+        
+        <div id="day2" class="day-view">
+             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
+             <div class="timeline-card"><img src="https://www.travelliker.com.hk/img/upload/img/3-81.png" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-mountain"></i> ACTIVITY</div><h3 class="card-title" onclick="showDetail('ropeway')">大湧谷纜車體驗 <div class="info-icon"><i class="fas fa-info"></i></div></h3></div></div>
+             <div class="timeline-card"><img src="https://www.travelliker.com.hk/img/upload/img/4-64.png" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-utensils"></i> MUST EAT</div><h3 class="card-title" onclick="showDetail('owakudani')">大湧谷 (黑蛋) <div class="info-icon"><i class="fas fa-info"></i></div></h3></div></div>
+             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>午餐：</strong> 箱根風味餐</div>
+             <div class="timeline-card"><img src="https://www.travelliker.com.hk/img/upload/img/1-942.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-ship"></i> CRUISE</div><h3 class="card-title" onclick="showDetail('ashinoko')">蘆之湖海賊船 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="action-buttons"><a href="https://maps.google.com/?q=箱根海賊船" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航</a></div></div></div>
+             <div class="timeline-card"><img src="https://s3-ap-northeast-1.amazonaws.com/thegate/2021/04/14/12/41/19/Hakone%20shrine.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-torii-gate"></i> CULTURE</div><h3 class="card-title" onclick="showDetail('hakone_shrine')">箱根神社 <div class="info-icon"><i class="fas fa-info"></i></div></h3></div></div>
+             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 自助式百匯料理</div>
+             <div class="timeline-card"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL (續住)</div><h3 class="card-title" onclick="showDetail('tenseien')">箱根天成園 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="cvs-box"><div class="cvs-title"><i class="fas fa-store" style="margin-right:6px; color:#F39C12;"></i> 附近便利商店 (補給站)</div><div class="cvs-item"><div class="cvs-info"><div>Lawson 箱根湯本店</div><span style="color:#C0392B;">營業時間：07:00 - 22:00 (非24h)</span></div><a href="https://www.google.com/maps/search/?api=1&query=Lawson+Hakone+Yumoto" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div><div class="cvs-item"><div class="cvs-info"><div>7-Eleven 箱根湯本駅前店</div><span style="color:#27AE60;">營業時間：24小時</span></div><a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Hakone+Yumoto+Station" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div></div></div></div>
+        </div>
+        
+        <div id="day3" class="day-view">
+            <div class="timeline-card"><div class="card-content"><div class="card-meta"><i class="fas fa-map-marker-alt"></i> START</div><h3 class="card-title">出發：箱根天成園</h3></div></div>
+            <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
+            <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 預估車程：1小時20分</div></div>
+            <div class="timeline-card"><img src="https://images.unsplash.com/photo-1579758782390-3490b4d4554f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><h3 class="card-title" onclick="showDetail('saiko')">西湖里根場 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="action-buttons"><a href="https://maps.google.com/?q=西湖いやしの里根場" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航</a></div></div></div>
+            <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 預估車程：30分</div></div>
+            <div class="meal-card"><i class="fas fa-utensils"></i> <strong>午餐：</strong> 河口湖特色料理</div>
+            <div class="timeline-card"><img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><h3 class="card-title" onclick="showDetail('appare')">河口湖天晴號 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="action-buttons"><a href="https://www.google.com/maps/search/?api=1&query=Kawaguchiko+Appare+Boat" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航</a></div></div></div>
+            <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 預估車程：20分</div></div>
+            <div class="timeline-card"><img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><h3 class="card-title" onclick="showDetail('chureito')">新倉山淺間公園 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="action-buttons"><a href="https://maps.google.com/?q=新倉山淺間公園" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航</a></div></div></div>
+            <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 預估車程：1小時40分</div></div>
+            <div class="timeline-card"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL</div><h3 class="card-title">太陽城王子大飯店</h3><div class="action-buttons"><a href="https://maps.google.com/?q=太陽城王子大飯店" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航至飯店</a></div></div></div>
+            <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 方便逛街自理</div>
+        </div>
+        
+        <div id="day4" class="day-view">
+            <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
+            <div class="meal-card"><i class="fas fa-utensils"></i> <strong>午/晚餐：</strong> 方便逛街自理</div>
+            <div class="timeline-card"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-walking"></i> FREE TIME</div><h3 class="card-title">全日自由活動</h3><div class="action-buttons"><a href="https://maps.google.com/?q=東京" target="_blank" class="btn btn-map"><i class="fas fa-map"></i> 開啟 Google Maps 探索</a></div></div></div>
+        </div>
+        
+        <div id="day5" class="day-view">
+            <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
+            <div class="timeline-card"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-plane"></i> FLIGHT 14:35</div><h3 class="card-title">成田機場 -> 桃園</h3></div></div>
+            <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 溫暖的家</div>
+        </div>
+        
         <div style="height:40px;"></div>
     </div>
 
@@ -403,23 +332,10 @@
         <div style="margin:20px 0;">
             <div class="form-card" id="note-form-card">
                 <h3 style="margin:0 0 15px 0;" id="form-title">新增景點筆記</h3>
-                <div class="form-group">
-                    <label class="form-label">標題</label>
-                    <input type="text" id="note-title" class="form-control" placeholder="例如：想吃的拉麵...">
-                </div>
+                <div class="form-group"><label class="form-label">標題</label><input type="text" id="note-title" class="form-control" placeholder="例如：想吃的拉麵..."></div>
                 <div style="display:flex; gap:10px;">
-                    <div class="form-group" style="flex:1;">
-                        <label class="form-label">地點</label>
-                        <select id="note-location" class="form-control">
-                            <option value="東京">東京</option><option value="池袋">池袋</option><option value="箱根">箱根</option><option value="河口湖">河口湖</option><option value="機場">機場</option><option value="其他">其他</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="flex:1;">
-                        <label class="form-label">分類</label>
-                        <select id="note-category" class="form-control">
-                            <option value="eat">吃 (Food)</option><option value="buy">買 (Buy)</option><option value="spot">景點 (Spot)</option><option value="todo">待辦 (To-do)</option><option value="other">其他 (Other)</option>
-                        </select>
-                    </div>
+                    <div class="form-group" style="flex:1;"><label class="form-label">地點</label><select id="note-location" class="form-control"><option value="東京">東京</option><option value="池袋">池袋</option><option value="箱根">箱根</option><option value="河口湖">河口湖</option><option value="機場">機場</option><option value="其他">其他</option></select></div>
+                    <div class="form-group" style="flex:1;"><label class="form-label">分類</label><select id="note-category" class="form-control"><option value="eat">吃 (Food)</option><option value="buy">買 (Buy)</option><option value="spot">景點 (Spot)</option><option value="todo">待辦 (To-do)</option><option value="other">其他 (Other)</option></select></div>
                 </div>
                 <div class="form-group"><label class="form-label">地圖連結 (選填)</label><input type="url" id="note-map" class="form-control" placeholder="https://goo.gl/maps/..."></div>
                 <div class="form-group"><label class="form-label">詳細說明</label><textarea id="note-desc" class="form-control" rows="3" placeholder="備註..."></textarea></div>
@@ -458,22 +374,19 @@
     </div>
 
     <script>
-        // --- NOTEBOOK LOGIC (RELOAD & JUMP) ---
+        // --- INSTANT UPDATE LOGIC ---
         let notes = [];
         let editingNoteId = null;
 
         document.addEventListener('DOMContentLoaded', () => {
             loadNotes();
-            
-            // Check for reload flag
-            const lastTab = localStorage.getItem('last_active_tab');
-            if (lastTab === 'notebook') {
-                const navBtn = document.querySelector("div[onclick*='notebook']");
-                switchTab('notebook', navBtn);
-                // Scroll to notebook list
-                setTimeout(() => {
-                    document.getElementById('notes-list').scrollIntoView({behavior: 'smooth'});
-                }, 300);
+            // Restore visual state if returning to notebook
+            if(localStorage.getItem('active_tab') === 'notebook') {
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+                document.getElementById('tab-notebook').classList.add('active');
+                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                document.querySelector("div[onclick*='notebook']").classList.add('active');
+                document.getElementById('date-nav-container').style.display = 'none';
             }
         });
 
@@ -489,7 +402,7 @@
             try {
                 localStorage.setItem('trip_notes_v3', JSON.stringify(notes));
             } catch (e) {
-                alert('空間不足！');
+                alert('空間不足，請刪除部分圖片！');
             }
         }
 
@@ -522,7 +435,7 @@
 
             if (!title) { alert('請輸入標題'); return; }
 
-            const processNote = (imgData) => {
+            const updateUI = (imgData) => {
                 if (editingNoteId) {
                     const index = notes.findIndex(n => n.id === editingNoteId);
                     if (index !== -1) {
@@ -534,15 +447,70 @@
                     notes.unshift(note);
                 }
                 
+                // INSTANT UPDATE SEQUENCE
                 saveNotes();
-                localStorage.setItem('last_active_tab', 'notebook'); // Flag for reload
-                location.reload(); // Force reload to refresh DOM and clear memory
+                renderNotesList(); // Immediate render
+                resetForm();
+                // No reload needed for data, but can verify persistence
             };
 
             if (imageInput.files && imageInput.files[0]) {
-                resizeImage(imageInput.files[0], 600, 600, processNote);
+                resizeImage(imageInput.files[0], 600, 600, updateUI);
             } else {
-                processNote(null);
+                updateUI(null);
+            }
+        }
+
+        function renderNotesList() {
+            const listEl = document.getElementById('notes-list');
+            const emptyMsg = document.getElementById('empty-msg');
+            
+            listEl.innerHTML = ''; 
+            if(notes.length === 0) { 
+                listEl.appendChild(emptyMsg); emptyMsg.style.display = 'block'; 
+            } else {
+                emptyMsg.style.display = 'none';
+            }
+
+            notes.forEach(note => {
+                let tagColor = '#95A5A6'; let tagText = '其他';
+                if(note.category === 'eat') { tagColor = 'var(--tag-eat)'; tagText = '吃'; }
+                if(note.category === 'buy') { tagColor = 'var(--tag-buy)'; tagText = '買'; }
+                if(note.category === 'spot') { tagColor = 'var(--tag-spot)'; tagText = '景點'; }
+                if(note.category === 'todo') { tagColor = 'var(--tag-todo)'; tagText = '待辦'; }
+
+                const item = document.createElement('div');
+                item.className = 'note-list-item';
+                
+                // Click to open detail, ignore button clicks
+                item.onclick = (e) => {
+                    if(e.target.closest('.note-nav-icon')) return;
+                    if(e.target.closest('.note-edit-icon')) return;
+                    if(e.target.closest('.note-delete-icon')) return;
+                    showUserNoteDetail(note);
+                };
+
+                let navBtnHTML = note.mapLink 
+                    ? `<a href="${note.mapLink}" target="_blank" class="note-action-icon note-nav-icon"><i class="fas fa-location-arrow"></i></a>`
+                    : ``;
+
+                item.innerHTML = `
+                    <span class="note-title-text">${note.title}</span>
+                    <span class="note-tag-badge" style="background:${tagColor}">${tagText}</span>
+                    <span class="note-location-text"><i class="fas fa-map-marker-alt"></i> ${note.location}</span>
+                    ${navBtnHTML}
+                    <div class="note-action-icon note-edit-icon" onclick="editNote(${note.id})"><i class="fas fa-pen"></i></div>
+                    <div class="note-action-icon note-delete-icon" onclick="deleteNote(${note.id})"><i class="fas fa-trash-alt"></i></div>
+                `;
+                listEl.appendChild(item);
+            });
+        }
+
+        function deleteNote(id) {
+            if(confirm('確定刪除？')) {
+                notes = notes.filter(n => n.id !== id);
+                saveNotes();
+                renderNotesList();
             }
         }
 
@@ -555,6 +523,7 @@
             document.getElementById('note-category').value = note.category;
             document.getElementById('note-map').value = note.mapLink || '';
             document.getElementById('note-desc').value = note.desc || '';
+            
             document.getElementById('form-title').innerText = '編輯筆記';
             document.getElementById('btn-submit').innerHTML = '<i class="fas fa-save"></i> 更新筆記';
             document.getElementById('btn-submit').style.background = 'var(--btn-edit)';
@@ -576,52 +545,6 @@
             document.getElementById('note-form-card').classList.remove('editing');
         }
 
-        function deleteNote(id) {
-            if(confirm('確定刪除？')) {
-                notes = notes.filter(n => n.id !== id);
-                saveNotes();
-                localStorage.setItem('last_active_tab', 'notebook');
-                location.reload();
-            }
-        }
-
-        function renderNotesList() {
-            const listEl = document.getElementById('notes-list');
-            const emptyMsg = document.getElementById('empty-msg');
-            if(notes.length === 0) { listEl.innerHTML = ''; listEl.appendChild(emptyMsg); emptyMsg.style.display = 'block'; return; }
-            emptyMsg.style.display = 'none';
-            listEl.innerHTML = '';
-
-            notes.forEach(note => {
-                let tagColor = '#95A5A6'; let tagText = '其他';
-                if(note.category === 'eat') { tagColor = 'var(--tag-eat)'; tagText = '吃'; }
-                if(note.category === 'buy') { tagColor = 'var(--tag-buy)'; tagText = '買'; }
-                if(note.category === 'spot') { tagColor = 'var(--tag-spot)'; tagText = '景點'; }
-                if(note.category === 'todo') { tagColor = 'var(--tag-todo)'; tagText = '待辦'; }
-
-                const item = document.createElement('div');
-                item.className = 'note-list-item';
-                item.onclick = (e) => {
-                    if(e.target.closest('.note-action-icon')) return;
-                    showUserNoteDetail(note);
-                };
-
-                let navBtnHTML = note.mapLink 
-                    ? `<a href="${note.mapLink}" target="_blank" class="note-action-icon note-nav-icon"><i class="fas fa-location-arrow"></i></a>`
-                    : ``;
-
-                item.innerHTML = `
-                    <span class="note-title-text">${note.title}</span>
-                    <span class="note-tag-badge" style="background:${tagColor}">${tagText}</span>
-                    <span class="note-location-text"><i class="fas fa-map-marker-alt"></i> ${note.location}</span>
-                    ${navBtnHTML}
-                    <div class="note-action-icon note-edit-icon" onclick="editNote(${note.id})"><i class="fas fa-pen"></i></div>
-                    <div class="note-action-icon note-delete-icon" onclick="deleteNote(${note.id})"><i class="fas fa-trash-alt"></i></div>
-                `;
-                listEl.appendChild(item);
-            });
-        }
-
         function showUserNoteDetail(note) {
             document.getElementById('modal-title').innerText = note.title;
             let content = '';
@@ -632,7 +555,7 @@
             document.getElementById('detail-modal').classList.add('active');
         }
 
-        // --- EXISTING UTILS ---
+        // --- EXISTING FUNCTIONS ---
         function switchDay(dayId, btnElement) {
             var allDays = document.querySelectorAll('.day-view');
             for (var i = 0; i < allDays.length; i++) { allDays[i].classList.remove('active'); }
@@ -650,12 +573,16 @@
             for (var j = 0; j < allNavs.length; j++) { allNavs[j].classList.remove('active'); }
             if(navElement) navElement.classList.add('active');
             window.scrollTo(0, 0);
+            
+            // Save tab state
+            localStorage.setItem('active_tab', tabId);
+
             if(tabId === 'itinerary') document.getElementById('date-nav-container').style.display = 'flex';
             else document.getElementById('date-nav-container').style.display = 'none';
         }
 
         const attractionDetails = {
-            'tenseien': { title: '箱根天成園', content: '<p>必體驗：天空大露天風呂...</p>' },
+            'tenseien': { title: '箱根天成園', content: '<p><strong>必體驗：</strong>天空大露天風呂...</p>' },
             'ropeway': { title: '大湧谷纜車', content: '<p>空中散步眺望富士山...</p>' },
             'owakudani': { title: '大湧谷 (黑蛋)', content: '<p>必吃：長壽黑蛋、黑色咖哩麵包...</p>' },
             'ashinoko': { title: '蘆之湖海賊船', content: '<p>必吃：Bakery & Table 米粉咖哩麵包...</p>' },
