@@ -154,15 +154,32 @@
             position: relative;
             z-index: 1;
         }
+        
         .travel-time-badge {
-            background-color: #EAECEE; color: #5D6D7E; font-size: 0.75rem; font-weight: bold;
-            padding: 6px 16px; border-radius: 20px; display: flex; align-items: center; gap: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid var(--bg-color);
+            background-color: #EAECEE;
+            color: #5D6D7E;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 2px solid var(--bg-color);
         }
+        
         .travel-line {
-            position: absolute; top: -20px; bottom: 0; left: 50%; width: 2px;
+            position: absolute;
+            top: -20px;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
             background-image: linear-gradient(to bottom, #ccc 50%, rgba(255,255,255,0) 0%);
-            background-position: left; background-size: 2px 10px; background-repeat: repeat-y; z-index: -1;
+            background-position: left;
+            background-size: 2px 10px;
+            background-repeat: repeat-y;
+            z-index: -1;
         }
 
         /* --- NOTEBOOK STYLES --- */
@@ -242,7 +259,7 @@
         .maintenance-main-icon { font-size: 5rem; color: #BDC3C7; }
         .maintenance-sub-icon { font-size: 2.5rem; position: absolute; bottom: -10px; right: -10px; color: #F39C12; background: #fff; border-radius: 50%; padding: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-        /* --- USAGI GIF --- */
+        /* --- USAGI GIF ANIMATION --- */
         .usagi-patrol { position: fixed; bottom: 80px; left: -100px; width: 80px; z-index: 9999; pointer-events: none; animation: usagiRun 15s linear infinite; }
         .usagi-patrol img { width: 100%; height: auto; display: block; }
         @keyframes usagiRun { 0% { left: -100px; transform: scaleX(-1); } 45% { left: 100%; transform: scaleX(-1); } 50% { left: 100%; transform: scaleX(1); } 95% { left: -100px; transform: scaleX(1); } 100% { left: -100px; transform: scaleX(-1); } }
@@ -267,6 +284,7 @@
     <header>
         <div class="trip-title">TOKYO TRIP 2025</div>
         <h2 style="text-align:center; margin:0 0 15px 0; font-size:1.2rem; font-weight:bold;">烏拉呀哈東京迷路大作戰</h2>
+        
         <div id="date-nav-container" class="date-scroller">
             <div class="date-item active" onclick="switchDay('day1', this)"><span class="day-name">WED</span><span class="day-num">10</span></div>
             <div class="date-item" onclick="switchDay('day2', this)"><span class="day-name">THU</span><span class="day-num">11</span></div>
@@ -286,8 +304,8 @@
             <div class="timeline-card"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL</div><h3 class="card-title" onclick="showDetail('tenseien')">箱根天成園 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="card-subtitle">Hakone Tenseien</div><div class="recommendation-box"><img src="https://muzi.com.tw/wp-content/uploads/2024/05/%E7%AE%B1%E6%A0%B9%E4%BC%B4%E6%89%8B%E7%A6%AE3.jpg" class="rec-img"><div class="rec-text"><h4>順路必吃：箱根饅頭</h4><p>箱根湯本車站前的商店街有現蒸的溫泉饅頭。</p></div></div><div class="cvs-box"><div class="cvs-title"><i class="fas fa-store" style="margin-right:6px; color:#F39C12;"></i> 附近便利商店 (補給站)</div><div class="cvs-item"><div class="cvs-info"><div>Lawson 箱根湯本店</div><span style="color:#C0392B;">營業時間：07:00 - 22:00 (非24h)</span></div><a href="https://www.google.com/maps/search/?api=1&query=Lawson+Hakone+Yumoto" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div><div class="cvs-item"><div class="cvs-info"><div>7-Eleven 箱根湯本駅前店</div><span style="color:#27AE60;">營業時間：24小時</span></div><a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Hakone+Yumoto+Station" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div></div><div class="action-buttons"><a href="https://maps.google.com/?q=箱根天成園" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航至飯店</a></div></div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 會席料理 - 晚宴</div>
         </div>
-        
         <div id="day2" class="day-view">
+             <div class="weather-scroll-container"><div class="weather-title">箱根・預測天氣</div><div class="weather-scroll"><div class="weather-hour"><span>09:00</span><i class="fas fa-cloud"></i><span>8°</span></div><div class="weather-hour"><span>12:00</span><i class="fas fa-cloud-sun"></i><span>12°</span></div></div></div>
              <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
              <div class="timeline-card"><img src="https://www.travelliker.com.hk/img/upload/img/3-81.png" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-mountain"></i> ACTIVITY</div><h3 class="card-title" onclick="showDetail('ropeway')">大湧谷纜車體驗 <div class="info-icon"><i class="fas fa-info"></i></div></h3></div></div>
              <div class="timeline-card"><img src="https://www.travelliker.com.hk/img/upload/img/4-64.png" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-utensils"></i> MUST EAT</div><h3 class="card-title" onclick="showDetail('owakudani')">大湧谷 (黑蛋) <div class="info-icon"><i class="fas fa-info"></i></div></h3></div></div>
@@ -297,7 +315,6 @@
              <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 自助式百匯料理</div>
              <div class="timeline-card"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL (續住)</div><h3 class="card-title" onclick="showDetail('tenseien')">箱根天成園 <div class="info-icon"><i class="fas fa-info"></i></div></h3><div class="cvs-box"><div class="cvs-title"><i class="fas fa-store" style="margin-right:6px; color:#F39C12;"></i> 附近便利商店 (補給站)</div><div class="cvs-item"><div class="cvs-info"><div>Lawson 箱根湯本店</div><span style="color:#C0392B;">營業時間：07:00 - 22:00 (非24h)</span></div><a href="https://www.google.com/maps/search/?api=1&query=Lawson+Hakone+Yumoto" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div><div class="cvs-item"><div class="cvs-info"><div>7-Eleven 箱根湯本駅前店</div><span style="color:#27AE60;">營業時間：24小時</span></div><a href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Hakone+Yumoto+Station" target="_blank" class="cvs-btn"><i class="fas fa-location-arrow"></i> 導航</a></div></div></div></div>
         </div>
-        
         <div id="day3" class="day-view">
             <div class="timeline-card"><div class="card-content"><div class="card-meta"><i class="fas fa-map-marker-alt"></i> START</div><h3 class="card-title">出發：箱根天成園</h3></div></div>
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
@@ -312,19 +329,16 @@
             <div class="timeline-card"><div class="card-content"><div class="card-meta"><i class="fas fa-bed"></i> HOTEL</div><h3 class="card-title">太陽城王子大飯店</h3><div class="action-buttons"><a href="https://maps.google.com/?q=太陽城王子大飯店" target="_blank" class="btn btn-map"><i class="fas fa-location-arrow"></i> 導航至飯店</a></div></div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 方便逛街自理</div>
         </div>
-        
         <div id="day4" class="day-view">
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>午/晚餐：</strong> 方便逛街自理</div>
             <div class="timeline-card"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-walking"></i> FREE TIME</div><h3 class="card-title">全日自由活動</h3><div class="action-buttons"><a href="https://maps.google.com/?q=東京" target="_blank" class="btn btn-map"><i class="fas fa-map"></i> 開啟 Google Maps 探索</a></div></div></div>
         </div>
-        
         <div id="day5" class="day-view">
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
             <div class="timeline-card"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=800&q=80" class="card-image"><div class="card-content"><div class="card-meta"><i class="fas fa-plane"></i> FLIGHT 14:35</div><h3 class="card-title">成田機場 -> 桃園</h3></div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 溫暖的家</div>
         </div>
-        
         <div style="height:40px;"></div>
     </div>
 
@@ -343,7 +357,8 @@
                 <button onclick="handleAddOrUpdate()" id="btn-submit" class="btn btn-map" style="width:100%; background:var(--primary-text);"><i class="fas fa-plus"></i> 加入筆記</button>
                 <button onclick="resetForm()" id="btn-cancel" class="btn btn-cancel" style="width:100%;">取消編輯</button>
             </div>
-            <div id="notes-list"><div style="text-align:center; color:#999; margin-top:30px;" id="empty-msg">還沒有筆記，快來新增吧！</div></div>
+            <div id="empty-msg" style="text-align:center; color:#999; margin-top:30px;">還沒有筆記，快來新增吧！</div>
+            <div id="notes-list"></div>
         </div>
     </div>
 
@@ -374,21 +389,9 @@
     </div>
 
     <script>
-        // --- INSTANT UPDATE LOGIC ---
+        // --- NOTEBOOK INSTANT UPDATE & FIX ---
         let notes = [];
         let editingNoteId = null;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadNotes();
-            // Restore visual state if returning to notebook
-            if(localStorage.getItem('active_tab') === 'notebook') {
-                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                document.getElementById('tab-notebook').classList.add('active');
-                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-                document.querySelector("div[onclick*='notebook']").classList.add('active');
-                document.getElementById('date-nav-container').style.display = 'none';
-            }
-        });
 
         function loadNotes() {
             const savedNotes = localStorage.getItem('trip_notes_v3');
@@ -402,7 +405,7 @@
             try {
                 localStorage.setItem('trip_notes_v3', JSON.stringify(notes));
             } catch (e) {
-                alert('空間不足，請刪除部分圖片！');
+                alert('儲存空間不足，請刪除部分照片！');
             }
         }
 
@@ -446,12 +449,9 @@
                     const note = { id: Date.now(), title, location, category, mapLink, desc, imgData };
                     notes.unshift(note);
                 }
-                
-                // INSTANT UPDATE SEQUENCE
                 saveNotes();
-                renderNotesList(); // Immediate render
+                renderNotesList();
                 resetForm();
-                // No reload needed for data, but can verify persistence
             };
 
             if (imageInput.files && imageInput.files[0]) {
@@ -467,7 +467,7 @@
             
             listEl.innerHTML = ''; 
             if(notes.length === 0) { 
-                listEl.appendChild(emptyMsg); emptyMsg.style.display = 'block'; 
+                emptyMsg.style.display = 'block'; 
             } else {
                 emptyMsg.style.display = 'none';
             }
@@ -481,12 +481,8 @@
 
                 const item = document.createElement('div');
                 item.className = 'note-list-item';
-                
-                // Click to open detail, ignore button clicks
                 item.onclick = (e) => {
-                    if(e.target.closest('.note-nav-icon')) return;
-                    if(e.target.closest('.note-edit-icon')) return;
-                    if(e.target.closest('.note-delete-icon')) return;
+                    if(e.target.closest('.note-nav-icon') || e.target.closest('.note-edit-icon') || e.target.closest('.note-delete-icon')) return;
                     showUserNoteDetail(note);
                 };
 
@@ -506,14 +502,6 @@
             });
         }
 
-        function deleteNote(id) {
-            if(confirm('確定刪除？')) {
-                notes = notes.filter(n => n.id !== id);
-                saveNotes();
-                renderNotesList();
-            }
-        }
-
         function editNote(id) {
             const note = notes.find(n => n.id === id);
             if (!note) return;
@@ -523,7 +511,6 @@
             document.getElementById('note-category').value = note.category;
             document.getElementById('note-map').value = note.mapLink || '';
             document.getElementById('note-desc').value = note.desc || '';
-            
             document.getElementById('form-title').innerText = '編輯筆記';
             document.getElementById('btn-submit').innerHTML = '<i class="fas fa-save"></i> 更新筆記';
             document.getElementById('btn-submit').style.background = 'var(--btn-edit)';
@@ -545,6 +532,14 @@
             document.getElementById('note-form-card').classList.remove('editing');
         }
 
+        function deleteNote(id) {
+            if(confirm('確定刪除？')) {
+                notes = notes.filter(n => n.id !== id);
+                saveNotes();
+                renderNotesList();
+            }
+        }
+
         function showUserNoteDetail(note) {
             document.getElementById('modal-title').innerText = note.title;
             let content = '';
@@ -555,7 +550,10 @@
             document.getElementById('detail-modal').classList.add('active');
         }
 
-        // --- EXISTING FUNCTIONS ---
+        // Load notes on startup
+        loadNotes();
+
+        // --- EXISTING UTILS ---
         function switchDay(dayId, btnElement) {
             var allDays = document.querySelectorAll('.day-view');
             for (var i = 0; i < allDays.length; i++) { allDays[i].classList.remove('active'); }
@@ -571,12 +569,8 @@
             document.getElementById('tab-' + tabId).classList.add('active');
             var allNavs = document.querySelectorAll('.nav-item');
             for (var j = 0; j < allNavs.length; j++) { allNavs[j].classList.remove('active'); }
-            if(navElement) navElement.classList.add('active');
+            navElement.classList.add('active');
             window.scrollTo(0, 0);
-            
-            // Save tab state
-            localStorage.setItem('active_tab', tabId);
-
             if(tabId === 'itinerary') document.getElementById('date-nav-container').style.display = 'flex';
             else document.getElementById('date-nav-container').style.display = 'none';
         }
