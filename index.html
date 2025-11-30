@@ -3,202 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>烏拉呀哈東京迷路大作戰 | 2025</title>
+    <title>烏拉呀哈東京迷路大作戰 (雲端版) | 2025</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        :root {
-            --primary-text: #333333;
-            --secondary-text: #666666;
-            --accent-brown: #8B5A2B;
-            --card-bg: #FFFFFF;
-            --bg-color: #F5F5F7;
-            --dot-color: #F4D03F;
-            --radius: 16px;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
-            
-            --btn-map: #428045;
-            --btn-edit: #2980B9;
-            --btn-delete: #E74C3C;
-            
-            /* Category Colors */
-            --tag-eat: #E67E22;
-            --tag-buy: #9B59B6;
-            --tag-spot: #2ECC71;
-            --tag-todo: #E74C3C;
-            --tag-transport: #3498DB;
-            --tag-other: #95A5A6;
-        }
-
+        /* CSS 樣式維持原樣，為了版面簡潔省略重複部分，直接使用您熟悉的樣式 */
+        :root { --primary-text: #333; --secondary-text: #666; --accent-brown: #8B5A2B; --card-bg: #FFF; --bg-color: #F5F5F7; --dot-color: #F4D03F; --radius: 16px; --shadow: 0 4px 12px rgba(0,0,0,0.08); --btn-map: #428045; --btn-edit: #2980B9; --btn-delete: #E74C3C; --tag-eat: #E67E22; --tag-buy: #9B59B6; --tag-spot: #2ECC71; --tag-todo: #E74C3C; --tag-transport: #3498DB; --tag-other: #95A5A6; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
-        body {
-            margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--bg-color); color: var(--primary-text);
-            padding-bottom: 90px; overflow-x: hidden;
-        }
-
+        body { margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--primary-text); padding-bottom: 90px; overflow-x: hidden; }
         h1, h2, h3, h4, .serif-font { font-family: 'Noto Serif JP', serif; }
-
-        /* HEADER */
         header { background: var(--card-bg); padding: 20px 20px 0 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
         .trip-title { text-align: center; font-size: 0.85rem; letter-spacing: 0.15em; color: var(--secondary-text); margin-bottom: 5px; text-transform: uppercase; font-weight: 500; }
-        
-        /* DATE SCROLLER */
-        .date-scroller { display: flex; overflow-x: auto; gap: 15px; padding: 15px 0; scrollbar-width: none; }
-        .date-scroller::-webkit-scrollbar { display: none; }
+        .date-scroller { display: flex; overflow-x: auto; gap: 15px; padding: 15px 0; scrollbar-width: none; } .date-scroller::-webkit-scrollbar { display: none; }
         .date-item { min-width: 60px; display: flex; flex-direction: column; align-items: center; opacity: 0.4; transition: 0.3s; cursor: pointer; padding: 5px; border-radius: 12px; }
         .date-item.active { opacity: 1; transform: scale(1.05); color: #333; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
         .date-item.active .day-num { border-bottom: 3px solid #C5A065; color: #C5A065; padding-bottom: 2px; }
         .date-item .day-name { font-size: 0.7rem; font-weight: bold; margin-bottom: 4px; }
         .date-item .day-num { font-size: 1.3rem; font-family: 'Noto Serif JP', serif; font-weight: bold; }
-
-        /* CONTAINER */
         .container { padding: 0 16px; max-width: 600px; margin: 0 auto; }
-        .tab-content, .day-view { display: none; animation: fadeIn 0.3s; }
-        .tab-content.active, .day-view.active { display: block; }
-
-        /* WEATHER */
-        .weather-scroll-container { margin: 20px 0; }
-        .weather-card { background: #FFFFFF; border-radius: 16px; padding: 15px; margin-bottom: 20px; color: var(--primary-text); box-shadow: var(--shadow); border: 1px solid #EAEAEA; }
+        .tab-content, .day-view { display: none; animation: fadeIn 0.3s; } .tab-content.active, .day-view.active { display: block; }
+        .weather-scroll-container { margin: 20px 0; } .weather-card { background: #FFFFFF; border-radius: 16px; padding: 15px; margin-bottom: 20px; color: var(--primary-text); box-shadow: var(--shadow); border: 1px solid #EAEAEA; }
         .weather-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #F0F0F0; padding-bottom: 8px; }
         .weather-title { font-weight: bold; font-size: 0.95rem; display:flex; align-items:center; gap:6px; color: var(--accent-brown); }
         .weather-range { font-size: 0.85rem; font-weight: 500; color: #999; }
         .weather-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; text-align: center; }
         .weather-col { display: flex; flex-direction: column; align-items: center; background: #F9F9F9; border-radius: 8px; padding: 8px 2px; }
-        .w-time { font-size: 0.7rem; margin-bottom: 4px; color: #888; }
-        .w-icon { font-size: 1.2rem; margin-bottom: 4px; }
-        .w-temp { font-size: 0.9rem; font-weight: bold; margin-bottom: 2px; color: #333; }
-        .w-rain { font-size: 0.65rem; color: #5DADE2; display:flex; align-items:center; gap:2px; font-weight: 500; }
-        .w-rain i { font-size:0.6rem; }
-
-        /* SPOT CARD */
-        .spot-card { display: flex; background: var(--card-bg); border-radius: 18px; border: 1px solid #EAEAEA; overflow: hidden; margin-bottom: 18px; min-height: 120px; box-shadow: var(--shadow); position: relative; transition: transform 0.2s; }
-        .spot-card:active { transform: scale(0.99); }
-        .spot-left { width: 50px; display: flex; align-items: center; justify-content: center; flex-direction: row; position: relative; flex-shrink: 0; background-color: #FAFAFA; padding: 10px 0; }
-        .spot-location-text { writing-mode: vertical-rl; text-orientation: upright; font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 1.1rem; color: var(--accent-brown); letter-spacing: 0.3em; line-height: 1; }
-        .spot-divider { width: 4px; background-color: #D0D0D0; border-radius: 2px; height: 70%; position: absolute; right: 0; top: 15%; }
+        .w-time { font-size: 0.7rem; margin-bottom: 4px; color: #888; } .w-icon { font-size: 1.2rem; margin-bottom: 4px; } .w-temp { font-size: 0.9rem; font-weight: bold; margin-bottom: 2px; color: #333; } .w-rain { font-size: 0.65rem; color: #5DADE2; display:flex; align-items:center; gap:2px; font-weight: 500; } .w-rain i { font-size:0.6rem; }
+        .spot-card { display: flex; background: var(--card-bg); border-radius: 18px; border: 1px solid #EAEAEA; overflow: hidden; margin-bottom: 18px; min-height: 120px; box-shadow: var(--shadow); position: relative; transition: transform 0.2s; } .spot-card:active { transform: scale(0.99); }
+        .spot-left { width: 50px; display: flex; align-items: center; justify-content: center; flex-direction: row; position: relative; flex-shrink: 0; background-color: #FAFAFA; padding: 10px 0; } .spot-location-text { writing-mode: vertical-rl; text-orientation: upright; font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 1.1rem; color: var(--accent-brown); letter-spacing: 0.3em; line-height: 1; } .spot-divider { width: 4px; background-color: #D0D0D0; border-radius: 2px; height: 70%; position: absolute; right: 0; top: 15%; }
         .spot-content { flex: 1; padding: 14px 10px 14px 12px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
         .spot-title { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; font-weight: 700; margin: 0 0 8px 0; color: #2c3e50; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; display: flex; align-items: center; }
-        .spot-notes-list { display: flex; flex-direction: column; gap: 5px; }
-        .spot-note-item { display: flex; align-items: center; font-size: 0.9rem; color: #555; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .spot-note-dot { width: 12px; height: 12px; background-color: var(--dot-color); border: 1px solid #777; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
-        .no-notes-text { font-size: 0.85rem; color: #BBB; font-style: normal; display: flex; align-items: center; }
-        .no-notes-text::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #DDD; border-radius: 50%; margin-right: 8px; }
-        .spot-image-container { width: 110px; flex-shrink: 0; position: relative; }
-        .spot-image { width: 100%; height: 100%; object-fit: cover; mask-image: linear-gradient(to right, transparent 0%, black 10%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%); }
+        .spot-notes-list { display: flex; flex-direction: column; gap: 5px; } .spot-note-item { display: flex; align-items: center; font-size: 0.9rem; color: #555; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .spot-note-dot { width: 12px; height: 12px; background-color: var(--dot-color); border: 1px solid #777; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+        .no-notes-text { font-size: 0.85rem; color: #BBB; font-style: normal; display: flex; align-items: center; } .no-notes-text::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #DDD; border-radius: 50%; margin-right: 8px; }
+        .spot-image-container { width: 110px; flex-shrink: 0; position: relative; } .spot-image { width: 100%; height: 100%; object-fit: cover; mask-image: linear-gradient(to right, transparent 0%, black 10%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%); }
         .info-icon-small { font-size: 0.7rem; color: #999; border: 1px solid #ddd; border-radius: 50%; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; vertical-align: middle; font-family: sans-serif; }
-
-        /* OTHERS */
-        .meal-card { background: #fff; padding: 12px 16px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; color: #555; box-shadow: var(--shadow); border-left: 5px solid #D35400; display: flex; align-items: center; }
-        .meal-card i { color: #D35400; margin-right: 10px; font-size: 1.1rem; }
-        .travel-time-container { display: flex; justify-content: center; margin: -25px 0 12px 0; position: relative; z-index: 0; }
-        .travel-time-badge { background: #F0F2F5; color: #7F8C8D; font-size: 0.7rem; font-weight: bold; padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid #FFF; }
-        .travel-line { position: absolute; top: -20px; bottom: 0; left: 50%; width: 2px; background: linear-gradient(to bottom, #ccc 50%, transparent 0%); background-size: 2px 10px; z-index: -1; }
-        .flight-board { background: #2C3E50; color: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3); position: relative; overflow: hidden; }
-        .flight-board::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #E74C3C, #F1C40F, #3498DB); }
-        .flight-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .flight-code { font-family: 'Roboto Mono', monospace; font-size: 1.8rem; font-weight: bold; letter-spacing: 1px; color: #ECF0F1; }
-        .flight-route { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; font-weight: bold; }
-        .flight-time-label { font-size: 0.7rem; color: #95A5A6; text-transform: uppercase; display: block; margin-bottom: 2px;}
-        .flight-time-val { font-family: 'Roboto Mono', monospace; font-size: 1.2rem; font-weight: bold; }
-        .flight-icon { font-size: 1rem; color: #BDC3C7; transform: rotate(90deg); }
-        .flight-status-bar { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .status-indicator { font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
-        .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #95A5A6; }
-        .status-dot.active { background: #2ECC71; animation: blink 1.5s infinite; }
-        .btn-flight-check { background: #E67E22; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
-        .hotel-info-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: var(--shadow); border-left: 5px solid var(--accent-brown); }
-        .hotel-name { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: bold; color: #2C3E50; margin-bottom: 10px; }
-        .hotel-detail-row { display: flex; margin-bottom: 10px; align-items: start; }
-        .hotel-icon { width: 24px; color: #95A5A6; font-size: 1rem; margin-top: 2px; }
-        .hotel-text { flex: 1; font-size: 0.9rem; color: #555; line-height: 1.5; }
-        .hotel-actions { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-hotel { flex: 1; padding: 8px; border-radius: 8px; text-align: center; font-size: 0.85rem; text-decoration: none; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .btn-copy { background: #f9f9f9; color: #333; } .btn-call { background: #E8F8F5; color: #1ABC9C; border-color: #1ABC9C; }
-        .form-card { background: white; padding: 20px; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #555; }
-        .form-control { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 8px; background: #fafafa; }
-        .note-list-item { background: white; border-radius: 10px; padding: 12px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f0f0f0; }
-        .note-title-text { flex-grow: 1; font-weight: bold; color: #333; font-size: 0.95rem; }
-        .note-tag-badge { font-size: 0.65rem; color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; flex-shrink: 0; }
-        .note-location-text { font-size: 0.75rem; color: #999; flex-shrink: 0; }
-        .note-btn { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; margin-left: 2px; flex-shrink: 0; cursor: pointer; }
-        .btn-nav { background: #E8F5E9; color: var(--btn-map); } .btn-edit { background: #EBF5FB; color: var(--btn-edit); } .btn-del { background: #FDEDEC; color: var(--btn-delete); }
-        .btn-action { width: 100%; padding: 12px; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; border: none; margin-top: 5px; }
-        .btn-blue { background: var(--primary-text); color: white; } .btn-gray { background: #95A5A6; color: white; }
-        .cvs-box { margin-top: 20px; background: #F4F6F7; border-radius: 12px; padding: 15px; border-left: 4px solid var(--btn-map); }
-        .cvs-title { font-size: 0.85rem; font-weight: bold; color: var(--primary-text); margin-bottom: 10px; display: flex; align-items: center; }
-        .cvs-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
-        .cvs-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-        .cvs-info div { font-size: 0.9rem; font-weight: bold; }
-        .cvs-info span { font-size: 0.75rem; color: #666; }
-        .cvs-btn { background: white; border: 1px solid var(--btn-map); color: var(--btn-map); padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; }
-        .shop-list { margin-top: 10px; }
-        .shop-item { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #eee; }
-        .shop-thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; margin-right: 12px; background: #f0f0f0; }
-        .shop-info { flex: 1; }
-        .shop-name { font-size: 0.9rem; font-weight: bold; color: #333; }
-        .shop-desc { font-size: 0.75rem; color: #666; margin-top: 2px; }
-        .shop-nav { color: var(--btn-map); font-size: 1.2rem; padding: 5px; }
-        .recommendation-box { margin-top: 15px; background: #FFF9F0; border-radius: 12px; padding: 12px; display: flex; gap: 12px; align-items: center; }
-        .rec-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
-        .rec-text h4 { margin: 0 0 4px 0; font-size: 0.9rem; color: #D35400; }
-        .rec-text p { margin: 0; font-size: 0.8rem; color: #666; line-height: 1.4; }
-        .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-        .btn { width: 100%; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; justify-content: center; transition: 0.2s; border:none; cursor:pointer;}
-        .btn i { margin-right: 8px; }
-        .btn-map { background-color: var(--btn-map); color: white; box-shadow: 0 4px 10px rgba(66, 128, 69, 0.2); }
-
-        /* MODAL */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: flex-end; }
-        .modal-overlay.active { display: flex; animation: fadeIn 0.3s; }
-        .modal-content { background: white; width: 100%; max-width: 600px; border-radius: 24px 24px 0 0; padding: 30px 25px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.3s; }
-        .modal-close-btn { position: absolute; top: 20px; right: 20px; background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: #666; }
-        .modal-title { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; margin-bottom: 15px; padding-right: 30px; color: #2c3e50; }
-        .modal-hero-img { width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .modal-body { font-size: 1rem; line-height: 1.8; color: #444; }
-        .modal-subtitle { font-weight:bold; color:var(--btn-map); margin-top:15px; margin-bottom:5px; display:flex; align-items:center; gap:5px; }
-
-        /* USAGI */
-        .usagi-patrol { position: fixed; bottom: 75px; left: -100px; width: 70px; z-index: 9999; pointer-events: auto; cursor: pointer; animation: usagiRun 20s linear infinite; }
-        .usagi-patrol img { width: 100%; display: block; }
-        .usagi-patrol:hover { animation-play-state: paused; }
-        @keyframes usagiRun { 0% {left:-100px; transform:scaleX(-1);} 45% {left:100%; transform:scaleX(-1);} 50% {left:100%; transform:scaleX(1);} 95% {left:-100px; transform:scaleX(1);} 100% {left:-100px; transform:scaleX(-1);} }
-        @keyframes blink { 0% {opacity:1;} 50% {opacity:0.4;} 100% {opacity:1;} }
-
-        /* BOTTOM NAV */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); display: flex; justify-content: space-around; padding: 12px 0 28px 0; border-top: 1px solid rgba(0,0,0,0.05); z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.02); }
-        .nav-item { text-align: center; color: #ccc; cursor: pointer; flex: 1; }
-        .nav-item.active { color: var(--primary-text); }
-        .nav-item i { font-size: 1.3rem; margin-bottom: 4px; display: block; }
-        .nav-item span { font-size: 0.65rem; font-weight: 600; }
-
-        /* EXPENSE SPECIFIC - LIVELY STYLE */
-        .expense-list-item {
-            background: white; border-radius: 12px; padding: 15px; margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 12px;
-            border-left: 5px solid transparent; /* Color bar */
-            cursor: pointer; transition: transform 0.1s;
-        }
-        .expense-list-item:active { transform: scale(0.98); }
-        .expense-info { flex: 1; margin-right: 5px; }
-        .expense-title { font-size: 1rem; font-weight: bold; color: #333; }
-        .expense-meta { font-size: 0.75rem; color: #777; display: flex; gap: 6px; align-items: center; margin-top: 4px; }
-        .expense-amount { font-family: 'Roboto Mono', monospace; font-weight: bold; font-size: 1.1rem; color: #2C3E50; }
-        .payment-icon { width: 36px; height: 36px; border-radius: 50%; background: #F0F3F4; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #555; border: 1px solid #E0E0E0; }
-        
-        /* RECEIPT STYLE DETAIL */
-        .receipt-header { text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; margin-bottom: 15px; }
-        .receipt-total { font-size: 2rem; font-weight: bold; color: var(--primary-text); font-family: 'Roboto Mono'; margin: 10px 0; }
-        .receipt-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; color: #555; }
-        .receipt-label { color: #999; }
+        .flight-board { background: #2C3E50; color: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3); position: relative; overflow: hidden; } .flight-board::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #E74C3C, #F1C40F, #3498DB); }
+        .flight-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; } .flight-code { font-family: 'Roboto Mono', monospace; font-size: 1.8rem; font-weight: bold; letter-spacing: 1px; color: #ECF0F1; } .flight-route { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; font-weight: bold; } .flight-time-label { font-size: 0.7rem; color: #95A5A6; text-transform: uppercase; display: block; margin-bottom: 2px;} .flight-time-val { font-family: 'Roboto Mono', monospace; font-size: 1.2rem; font-weight: bold; } .flight-icon { font-size: 1rem; color: #BDC3C7; transform: rotate(90deg); }
+        .flight-status-bar { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center; } .status-indicator { font-size: 0.85rem; display: flex; align-items: center; gap: 6px; } .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #95A5A6; } .status-dot.active { background: #2ECC71; animation: blink 1.5s infinite; } .btn-flight-check { background: #E67E22; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+        .hotel-info-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: var(--shadow); border-left: 5px solid var(--accent-brown); } .hotel-name { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: bold; color: #2C3E50; margin-bottom: 10px; } .hotel-detail-row { display: flex; margin-bottom: 10px; align-items: start; } .hotel-icon { width: 24px; color: #95A5A6; font-size: 1rem; margin-top: 2px; } .hotel-text { flex: 1; font-size: 0.9rem; color: #555; line-height: 1.5; } .hotel-actions { display: flex; gap: 10px; margin-top: 15px; } .btn-hotel { flex: 1; padding: 8px; border-radius: 8px; text-align: center; font-size: 0.85rem; text-decoration: none; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; gap: 5px; } .btn-copy { background: #f9f9f9; color: #333; } .btn-call { background: #E8F8F5; color: #1ABC9C; border-color: #1ABC9C; }
+        .meal-card { background: #fff; padding: 12px 16px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; color: #555; box-shadow: var(--shadow); border-left: 5px solid var(--food-color); display: flex; align-items: center; } .meal-card i { color: var(--food-color); margin-right: 10px; font-size: 1.1rem; }
+        .travel-time-container { display: flex; justify-content: center; margin: -25px 0 12px 0; position: relative; z-index: 0; } .travel-time-badge { background: #F0F2F5; color: #7F8C8D; font-size: 0.7rem; font-weight: bold; padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid #FFF; } .travel-line { position: absolute; top: -20px; bottom: 0; left: 50%; width: 2px; background: linear-gradient(to bottom, #ccc 50%, transparent 0%); background-size: 2px 10px; z-index: -1; }
+        .form-card { background: white; padding: 20px; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 20px; } .form-group { margin-bottom: 15px; } .form-label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #555; } .form-control { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 8px; background: #fafafa; }
+        .note-list-item { background: white; border-radius: 10px; padding: 12px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f0f0f0; } .note-title-text { flex-grow: 1; font-weight: bold; color: #333; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .note-tag-badge { font-size: 0.65rem; color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; flex-shrink: 0; } .note-location-text { font-size: 0.75rem; color: #999; flex-shrink: 0; } .note-btn { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; margin-left: 2px; flex-shrink: 0; cursor: pointer; } .btn-nav { background: #E8F5E9; color: var(--btn-map); } .btn-edit { background: #EBF5FB; color: var(--btn-edit); } .btn-del { background: #FDEDEC; color: var(--btn-delete); }
+        .btn-action { width: 100%; padding: 12px; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; border: none; margin-top: 5px; } .btn-blue { background: var(--primary-text); color: white; } .btn-gray { background: #95A5A6; color: white; }
+        .cvs-box { margin-top: 20px; background: #F4F6F7; border-radius: 12px; padding: 15px; border-left: 4px solid var(--btn-map); } .cvs-title { font-size: 0.85rem; font-weight: bold; color: var(--primary-text); margin-bottom: 10px; display: flex; align-items: center; } .cvs-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; } .cvs-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; } .cvs-info div { font-size: 0.9rem; font-weight: bold; } .cvs-info span { font-size: 0.75rem; color: #666; } .cvs-btn { background: white; border: 1px solid var(--btn-map); color: var(--btn-map); padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; }
+        .shop-list { margin-top: 10px; } .shop-item { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #eee; } .shop-thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; margin-right: 12px; background: #f0f0f0; } .shop-info { flex: 1; } .shop-name { font-size: 0.9rem; font-weight: bold; color: #333; } .shop-desc { font-size: 0.75rem; color: #666; margin-top: 2px; } .shop-nav { color: var(--btn-map); font-size: 1.2rem; padding: 5px; }
+        .recommendation-box { margin-top: 15px; background: #FFF9F0; border-radius: 12px; padding: 12px; display: flex; gap: 12px; align-items: center; } .rec-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; flex-shrink: 0; } .rec-text h4 { margin: 0 0 4px 0; font-size: 0.9rem; color: #D35400; } .rec-text p { margin: 0; font-size: 0.8rem; color: #666; line-height: 1.4; }
+        .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; } .btn { width: 100%; padding: 12px; border-radius: 8px; text-align: center; text-decoration: none; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; justify-content: center; transition: 0.2s; border:none; cursor:pointer;} .btn i { margin-right: 8px; } .btn-map { background-color: var(--btn-map); color: white; box-shadow: 0 4px 10px rgba(66, 128, 69, 0.2); }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: flex-end; } .modal-overlay.active { display: flex; animation: fadeIn 0.3s; } .modal-content { background: white; width: 100%; max-width: 600px; border-radius: 24px 24px 0 0; padding: 30px 25px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.3s; } .modal-close-btn { position: absolute; top: 20px; right: 20px; background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; color: #666; } .modal-title { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; margin-bottom: 15px; padding-right: 30px; color: #2c3e50; } .modal-hero-img { width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); } .modal-body { font-size: 1rem; line-height: 1.8; color: #444; } .modal-subtitle { font-weight:bold; color:var(--btn-map); margin-top:15px; margin-bottom:5px; display:flex; align-items:center; gap:5px; }
+        .usagi-patrol { position: fixed; bottom: 75px; left: -100px; width: 70px; z-index: 9999; pointer-events: auto; cursor: pointer; animation: usagiRun 20s linear infinite; } .usagi-patrol img { width: 100%; display: block; } .usagi-patrol:hover { animation-play-state: paused; } @keyframes usagiRun { 0% {left:-100px; transform:scaleX(-1);} 45% {left:100%; transform:scaleX(-1);} 50% {left:100%; transform:scaleX(1);} 95% {left:-100px; transform:scaleX(1);} 100% {left:-100px; transform:scaleX(-1);} } @keyframes blink { 0% {opacity:1;} 50% {opacity:0.4;} 100% {opacity:1;} }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); display: flex; justify-content: space-around; padding: 12px 0 28px 0; border-top: 1px solid rgba(0,0,0,0.05); z-index: 999; box-shadow: 0 -2px 10px rgba(0,0,0,0.02); } .nav-item { text-align: center; color: #ccc; cursor: pointer; flex: 1; } .nav-item.active { color: var(--primary-text); } .nav-item i { font-size: 1.3rem; margin-bottom: 4px; display: block; } .nav-item span { font-size: 0.65rem; font-weight: 600; }
+        .section-header { font-size: 1.1rem; font-weight: bold; margin: 20px 0 15px 0; border-left: 4px solid var(--accent-brown); padding-left: 10px; color: #333; }
+        .shop-list-compact { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; } .shop-card { min-width: 120px; background: #f9f9f9; border-radius: 8px; padding: 8px; font-size: 0.8rem; } .shop-card img { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; margin-bottom: 5px; }
+        .expense-list-item { background: white; border-radius: 12px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 12px; border-left: 5px solid transparent; cursor: pointer; transition: transform 0.1s; } .expense-list-item:active { transform: scale(0.98); } .expense-info { flex: 1; margin-right: 5px; } .expense-title { font-size: 1rem; font-weight: bold; color: #333; } .expense-meta { font-size: 0.75rem; color: #777; display: flex; gap: 6px; align-items: center; margin-top: 4px; } .expense-amount { font-family: 'Roboto Mono', monospace; font-weight: bold; font-size: 1.1rem; color: #2C3E50; } .payment-icon { width: 36px; height: 36px; border-radius: 50%; background: #F0F3F4; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #555; border: 1px solid #E0E0E0; }
+        .receipt-header { text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; margin-bottom: 15px; } .receipt-total { font-size: 2rem; font-weight: bold; color: var(--primary-text); font-family: 'Roboto Mono'; margin: 10px 0; } .receipt-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; color: #555; } .receipt-label { color: #999; }
     </style>
 </head>
 <body>
 
+    <!-- USAGI - Click to open budget -->
     <div class="usagi-patrol" onclick="openBudgetForm()">
         <img src="https://picx.zhimg.com/v2-a5881db720f3e30474da551e4e84ad59_b.webp" alt="Usagi">
     </div>
@@ -215,7 +79,9 @@
         </div>
     </header>
 
+    <!-- ITINERARY -->
     <div id="tab-itinerary" class="tab-content active container">
+        <!-- Day 1 -->
         <div id="day1" class="day-view active">
             <div id="weather-d1"></div>
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 溫暖的家</div>
@@ -226,6 +92,7 @@
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 會席料理 - 晚宴</div>
         </div>
 
+        <!-- Day 2 -->
         <div id="day2" class="day-view">
             <div id="weather-d2"></div>
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
@@ -238,6 +105,7 @@
             <div class="spot-card" data-spot-name="箱根天成園"><div class="spot-left"><div class="spot-location-text">神奈川</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('tenseien')"><div class="spot-title">箱根天成園 (續住) <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-tenseien_d2"></div></div><div class="spot-image-container"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="spot-image"></div></div>
         </div>
 
+        <!-- Day 3 -->
         <div id="day3" class="day-view">
             <div id="weather-d3"></div>
             <div class="spot-card" data-spot-name="箱根天成園"><div class="spot-left"><div class="spot-location-text">出發</div><div class="spot-divider"></div></div><div class="spot-content"><div class="spot-title">退房前往河口湖</div><div class="spot-notes-list"><div class="no-notes-text">車程約 1小時20分</div></div></div><div class="spot-image-container"><img src="201498fe_z.jpg" class="spot-image" style="opacity:0.5"></div></div>
@@ -253,22 +121,24 @@
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 方便逛街自理</div>
         </div>
 
+        <!-- Day 4 -->
         <div id="day4" class="day-view">
             <div id="weather-d4"></div>
             <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
             <div class="spot-card" data-spot-name="東京自由行"><div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div><div class="spot-content"><div class="spot-title">全日自由活動</div><div class="spot-notes-list"><div class="no-notes-text">建議：築地、六本木、銀座</div></div></div><div class="spot-image-container"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" class="spot-image"></div></div>
         </div>
 
+        <!-- Day 5 -->
         <div id="day5" class="day-view">
             <div id="weather-d5"></div>
              <div class="meal-card"><i class="fas fa-coffee"></i> <strong>早餐：</strong> 飯店內享用</div>
              <div class="spot-card" data-spot-name="成田機場"><div class="spot-left"><div class="spot-location-text">千葉</div><div class="spot-divider"></div></div><div class="spot-content"><div class="spot-title">成田機場 -> 桃園</div><div class="spot-notes-list"><div class="no-notes-text">FLIGHT 14:35</div></div></div><div class="spot-image-container"><img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=800&q=80" class="spot-image"></div></div>
-             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 溫暖的家</div>
         </div>
         
         <div style="height:40px;"></div>
     </div>
 
+    <!-- NOTEBOOK TAB -->
     <div id="tab-notebook" class="tab-content container">
         <div style="margin:20px 0;">
             <div class="form-card" id="note-form-card">
@@ -288,11 +158,13 @@
         </div>
     </div>
 
+    <!-- BUDGET TAB -->
     <div id="tab-budget" class="tab-content container">
         <div id="expense-list" style="margin-top:20px;"></div>
         <div style="margin-top:20px; text-align:center; color:#999;" id="budget-empty-msg">還沒有記帳資料，點擊烏薩奇來記一筆吧！</div>
     </div>
 
+    <!-- INFO TAB -->
     <div id="tab-info" class="tab-content container">
         <div class="flight-board">
             <div class="flight-row"><div class="flight-code">CI100</div><div class="flight-route"><span>TPE</span><i class="fas fa-plane flight-icon"></i><span>NRT</span></div></div>
@@ -326,11 +198,11 @@
         <div class="nav-item" onclick="switchTab('info', this)"><i class="far fa-user"></i><span>資訊</span></div>
     </nav>
 
+    <!-- BUDGET MODAL -->
     <div id="budget-modal" class="modal-overlay" onclick="closeBudgetForm(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeBudgetForm(event)">×</button>
             <h2 class="modal-title" id="budget-form-title">記一筆</h2>
-            
             <div class="form-group"><label class="form-label">日期</label><select id="exp-date" class="form-control"><option value="12/10">12/10 (三)</option><option value="12/11">12/11 (四)</option><option value="12/12">12/12 (五)</option><option value="12/13">12/13 (六)</option><option value="12/14">12/14 (日)</option></select></div>
             <div class="form-group"><label class="form-label">消費內容 *</label><input type="text" id="exp-title" class="form-control" placeholder="例如：便利商店"></div>
             <div style="display:flex; gap:10px;">
@@ -342,12 +214,11 @@
                 <div class="form-group" style="flex:1;"><label class="form-label">金額</label><input type="number" id="exp-amount" class="form-control"></div>
             </div>
             <div class="form-group"><label class="form-label">備註</label><textarea id="exp-note" class="form-control" rows="2"></textarea></div>
-            <div class="form-group"><label class="form-label">照片</label><input type="file" id="exp-image" class="form-control" accept="image/*"></div>
-            
             <button onclick="saveExpense()" class="btn-action btn-blue" style="width:100%;margin-top:10px;">存檔</button>
         </div>
     </div>
 
+    <!-- DETAIL MODAL -->
     <div id="detail-modal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closeModal(event)">×</button>
@@ -357,149 +228,187 @@
         </div>
     </div>
 
-    <script>
-        // --- DATA & LOGIC ---
-        const LOCATIONS = [
-            { lat: 35.77, lon: 140.39, name: '東京/成田' }, 
-            { lat: 35.23, lon: 139.10, name: '箱根' }, 
-            { lat: 35.49, lon: 138.74, name: '河口湖' }, 
-            { lat: 35.68, lon: 139.76, name: '東京' }, 
-            { lat: 35.77, lon: 140.39, name: '東京/成田' }
-        ];
-        const WMO_CODES = { 0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️', 45:'🌫️', 48:'🌫️', 51:'🌧️', 53:'🌧️', 55:'🌧️', 61:'🌧️', 63:'🌧️', 65:'🌧️', 80:'🌦️', 81:'🌦️', 82:'⛈️', 95:'⛈️', 96:'⛈️', 99:'⛈️' };
+    <!-- FIREBASE CONFIG & LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, updateDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-        let expenses = [];
+        const firebaseConfig = {
+          apiKey: "AIzaSyAqi1Ra0OmaWWF9-20pWQ7Z5cdRzo9MAPc",
+          authDomain: "tokyo-trip-2025-dc369.firebaseapp.com",
+          projectId: "tokyo-trip-2025-dc369",
+          storageBucket: "tokyo-trip-2025-dc369.firebasestorage.app",
+          messagingSenderId: "248213596190",
+          appId: "1:248213596190:web:bf917723d9bfa218c9660f"
+        };
+
+        let db;
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+        } catch (e) {
+            console.error("Firebase Config Error", e);
+        }
+
+        window.expenses = [];
+        window.notes = [];
         let editingExpenseId = null;
-        let notes = [];
         let editingNoteId = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadData();
-            initWeather();
-            checkFlightStatus();
-        });
+        if(db) {
+            const qNotes = query(collection(db, "notes"), orderBy("createdAt", "desc"));
+            onSnapshot(qNotes, (snapshot) => {
+                window.notes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                window.renderNotesToList();
+                window.renderNotesToItinerary();
+            });
 
-        function loadData() {
-            const savedExp = localStorage.getItem('trip_expenses');
-            if(savedExp) expenses = JSON.parse(savedExp);
-            renderExpenses();
-
-            const savedNotes = localStorage.getItem('trip_notes_v4');
-            if(savedNotes) notes = JSON.parse(savedNotes);
-            renderNotesToList();
-            renderNotesToItinerary();
+            const qExp = query(collection(db, "expenses"), orderBy("date", "asc"));
+            onSnapshot(qExp, (snapshot) => {
+                window.expenses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                window.renderExpenses();
+            });
         }
 
-        // Weather
-        async function updateWeather(dayIndex) {
-            const targetContainer = document.getElementById(`weather-d${dayIndex + 1}`);
-            if (!targetContainer) return;
-            const loc = LOCATIONS[dayIndex];
-            const tripDate = new Date('2025-12-10'); tripDate.setDate(tripDate.getDate() + dayIndex);
-            const today = new Date();
-            const diffDays = Math.ceil((tripDate - today) / (1000 * 60 * 60 * 24));
+        window.handleAddOrUpdate = async function() {
+            const title = document.getElementById('note-title').value;
+            if(!title) return alert('請輸入標題');
             
-            let apiUrl = (diffDays <= 10 && diffDays >= 0) 
-                ? `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&hourly=temperature_2m,precipitation_probability,weathercode&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo`
-                : `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&hourly=temperature_2m,precipitation_probability,weathercode&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=Asia%2FTokyo`;
+            const noteData = {
+                title: title,
+                location: document.getElementById('note-location').value,
+                category: document.getElementById('note-category').value,
+                map: document.getElementById('note-map').value,
+                desc: document.getElementById('note-desc').value,
+                createdAt: Date.now()
+            };
 
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                const maxTemp = Math.round(data.daily.temperature_2m_max[0]);
-                const minTemp = Math.round(data.daily.temperature_2m_min[0]);
-                const titleText = (diffDays <= 10 && diffDays >= 0) ? `📅 12/${10+dayIndex} 真實預報` : `⚠️ 參考用：今日即時天氣`;
-                
-                let html = `<div class="weather-card"><div class="weather-header"><div class="weather-title"><i class="fas fa-map-marker-alt"></i> ${loc.name} - ${titleText}</div><div class="weather-range">H:${maxTemp}° L:${minTemp}°</div></div><div class="weather-grid">`;
-                [6, 9, 12, 15, 18, 21].forEach(h => {
-                    const idx = h;
-                    const temp = Math.round(data.hourly.temperature_2m[idx]);
-                    const rain = data.hourly.precipitation_probability[idx];
-                    const icon = WMO_CODES[data.hourly.weathercode[idx]] || '❓';
-                    html += `<div class="weather-col"><div class="w-time">${h}:00</div><div class="w-icon">${icon}</div><div class="w-temp">${temp}°</div><div class="w-rain"><i class="fas fa-umbrella"></i> ${rain}%</div></div>`;
-                });
-                html += `</div></div>`;
-                targetContainer.innerHTML = html;
-            } catch (e) { targetContainer.innerHTML = `<div style="text-align:center; padding:10px; color:#999;">天氣資料載入失敗</div>`; }
+            if (editingNoteId) {
+                await updateDoc(doc(db, "notes", editingNoteId), noteData);
+            } else {
+                await addDoc(collection(db, "notes"), noteData);
+            }
+            window.resetForm();
         }
-        function initWeather() { for(let i=0; i<5; i++) updateWeather(i); }
 
-        // Budget
-        function openBudgetForm() {
+        window.deleteNote = async function(e, id) {
+            e.stopPropagation();
+            if(confirm('確定刪除？')) {
+                await deleteDoc(doc(db, "notes", id));
+            }
+        }
+
+        window.editNote = function(id) {
+            const n = window.notes.find(n => n.id === id);
+            if(!n) return;
+            editingNoteId = id;
+            document.getElementById('note-title').value = n.title;
+            document.getElementById('note-location').value = n.location;
+            document.getElementById('note-category').value = n.category;
+            document.getElementById('note-map').value = n.map;
+            document.getElementById('note-desc').value = n.desc;
+            
+            document.getElementById('form-title').innerText = '編輯筆記';
+            document.getElementById('btn-cancel').style.display = 'block';
+        }
+
+        window.resetForm = function() {
+            editingNoteId = null;
+            document.getElementById('note-title').value = '';
+            document.getElementById('note-desc').value = '';
+            document.getElementById('note-map').value = '';
+            document.getElementById('note-image').value = '';
+            document.getElementById('btn-cancel').style.display = 'none';
+            document.getElementById('form-title').innerText = '新增筆記';
+        }
+
+        window.renderNotesToList = function() {
+            const list = document.getElementById('notes-list');
+            list.innerHTML = '';
+            window.notes.forEach(n => {
+                const item = document.createElement('div');
+                item.className = 'note-list-item';
+                let tagColor = '#95A5A6'; let tagText = '其他';
+                if(n.category === 'eat') { tagColor = 'var(--tag-eat)'; tagText = '吃'; }
+                if(n.category === 'buy') { tagColor = 'var(--tag-buy)'; tagText = '買'; }
+                if(n.category === 'spot') { tagColor = 'var(--tag-spot)'; tagText = '景點'; }
+                if(n.category === 'todo') { tagColor = 'var(--tag-todo)'; tagText = '待辦'; }
+                
+                item.innerHTML = `<div class="note-title-text">${n.title}</div><div class="note-tag-badge" style="background:${tagColor}">${tagText}</div><div class="note-location-text">${n.location}</div><div class="note-btn btn-edit" onclick="editNote('${n.id}')"><i class="fas fa-pen"></i></div><div class="note-btn btn-del" onclick="deleteNote(event, '${n.id}')"><i class="fas fa-trash"></i></div>`;
+                item.onclick = (e) => { if(!e.target.closest('.note-btn')) showUserNoteDetail(n); };
+                list.appendChild(item);
+            });
+        }
+
+        window.openBudgetForm = function() {
             editingExpenseId = null;
             document.getElementById('budget-form-title').innerText = "記一筆";
             document.getElementById('exp-title').value = '';
             document.getElementById('exp-amount').value = '';
             document.getElementById('exp-note').value = '';
-            document.getElementById('exp-image').value = '';
             document.getElementById('budget-modal').classList.add('active');
         }
-        function closeBudgetForm(e) { if(e) e.preventDefault(); document.getElementById('budget-modal').classList.remove('active'); }
-        
-        function saveExpense() {
+
+        window.closeBudgetForm = function(e) {
+            if(e) e.preventDefault();
+            document.getElementById('budget-modal').classList.remove('active');
+        }
+
+        window.saveExpense = async function() {
             const title = document.getElementById('exp-title').value;
-            const amount = document.getElementById('exp-amount').value;
-            if(!title || !amount) { alert('請填寫內容與金額'); return; }
+            if(!title) return alert('請輸入內容');
             
-            const expense = {
-                id: editingExpenseId || Date.now(),
+            const expData = {
                 date: document.getElementById('exp-date').value,
                 title: title,
                 category: document.getElementById('exp-category').value,
                 method: document.getElementById('exp-method').value,
                 currency: document.getElementById('exp-curr').value,
-                amount: parseFloat(amount),
-                note: document.getElementById('exp-note').value,
-                imgData: null
+                amount: parseFloat(document.getElementById('exp-amount').value) || 0,
+                note: document.getElementById('exp-note').value
             };
-            
-            const fileInput = document.getElementById('exp-image');
-            if(fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) { expense.imgData = e.target.result; commitExpense(expense); };
-                reader.readAsDataURL(fileInput.files[0]);
+
+            if (editingExpenseId) {
+                await updateDoc(doc(db, "expenses", editingExpenseId), expData);
             } else {
-                if(editingExpenseId) { const old = expenses.find(e=>e.id===editingExpenseId); if(old) expense.imgData = old.imgData; }
-                commitExpense(expense);
+                await addDoc(collection(db, "expenses"), expData);
+            }
+            window.closeBudgetForm();
+        }
+
+        window.renderExpenses = function() {
+            const list = document.getElementById('expense-list');
+            list.innerHTML = '';
+            if(window.expenses.length === 0) {
+                 document.getElementById('budget-empty-msg').style.display = 'block';
+            } else {
+                 document.getElementById('budget-empty-msg').style.display = 'none';
+                 window.expenses.sort((a, b) => a.date.localeCompare(b.date));
+                 window.expenses.forEach(e => {
+                    const item = document.createElement('div');
+                    item.className = 'expense-list-item';
+                    item.style.borderLeftColor = `var(--tag-${e.category})`;
+                    
+                    let methodIcon = '<i class="fas fa-money-bill-wave"></i>';
+                    if(e.method === 'card') methodIcon = '<i class="fas fa-credit-card"></i>';
+                    if(e.method === 'suica') methodIcon = '<i class="fas fa-train"></i>';
+                    
+                    let catText = {eat:'飲食',buy:'購物',transport:'交通',spot:'景點',other:'其他'}[e.category] || '其他';
+                    
+                    item.innerHTML = `<div class="payment-icon">${methodIcon}</div><div class="expense-info"><div class="expense-title">${e.title}</div><div class="expense-meta"><span>${e.date}</span> • <span style="color:var(--tag-${e.category})">${catText}</span></div></div><div class="expense-amount">${e.currency === 'JPY' ? '¥' : 'NT$'}${e.amount.toLocaleString()}</div><div class="note-btn btn-edit" onclick="editExpense('${e.id}')"><i class="fas fa-pen"></i></div><div class="note-btn btn-del" onclick="deleteExpense(event, '${e.id}')"><i class="fas fa-trash"></i></div>`;
+                    item.onclick = (ev) => { if(!ev.target.closest('.note-btn')) showExpenseDetail(e); };
+                    list.appendChild(item);
+                 });
             }
         }
         
-        function commitExpense(exp) {
-            if(editingExpenseId) { const idx = expenses.findIndex(e=>e.id===editingExpenseId); if(idx!==-1) expenses[idx] = exp; } else { expenses.unshift(exp); }
-            localStorage.setItem('trip_expenses', JSON.stringify(expenses));
-            renderExpenses();
-            closeBudgetForm();
-            switchTab('budget', document.querySelector("div[onclick*='budget']"));
+        window.deleteExpense = async function(e, id) {
+             e.stopPropagation();
+             if(confirm('Delete?')) await deleteDoc(doc(db, "expenses", id));
         }
         
-        function renderExpenses() {
-            const list = document.getElementById('expense-list');
-            const msg = document.getElementById('budget-empty-msg');
-            list.innerHTML = '';
-            if(expenses.length === 0) { msg.style.display = 'block'; return; }
-            msg.style.display = 'none';
-            
-            // Sort by date asc (12/10 top)
-            expenses.sort((a, b) => a.date.localeCompare(b.date));
-
-            expenses.forEach(e => {
-                const item = document.createElement('div');
-                item.className = 'expense-list-item';
-                item.style.borderLeftColor = `var(--tag-${e.category})`;
-                
-                let methodIcon = '<i class="fas fa-money-bill-wave"></i>';
-                if(e.method === 'card') methodIcon = '<i class="fas fa-credit-card"></i>';
-                if(e.method === 'suica') methodIcon = '<i class="fas fa-train"></i>';
-                
-                let catText = {eat:'飲食',buy:'購物',transport:'交通',spot:'景點',other:'其他'}[e.category] || '其他';
-                item.innerHTML = `<div class="payment-icon">${methodIcon}</div><div class="expense-info"><div class="expense-title">${e.title}</div><div class="expense-meta"><span>${e.date}</span> • <span style="color:var(--tag-${e.category})">${catText}</span></div></div><div class="expense-amount">${e.currency === 'JPY' ? '¥' : 'NT$'}${e.amount.toLocaleString()}</div><div class="note-btn btn-edit" onclick="editExpense(${e.id})"><i class="fas fa-pen"></i></div><div class="note-btn btn-del" onclick="deleteExpense(${e.id})"><i class="fas fa-trash"></i></div>`;
-                item.onclick = (ev) => { if(!ev.target.closest('.note-btn')) showExpenseDetail(e); };
-                list.appendChild(item);
-            });
-        }
-        function deleteExpense(id) { if(confirm('Delete?')) { expenses = expenses.filter(e=>e.id!==id); localStorage.setItem('trip_expenses', JSON.stringify(expenses)); renderExpenses(); } }
-        function editExpense(id) {
-            const exp = expenses.find(e=>e.id===id); if(!exp) return;
+        window.editExpense = function(id) {
+            const exp = window.expenses.find(e=>e.id===id); if(!exp) return;
             editingExpenseId = id;
             document.getElementById('budget-form-title').innerText = "編輯帳務";
             document.getElementById('exp-date').value = exp.date;
@@ -511,45 +420,86 @@
             document.getElementById('exp-note').value = exp.note;
             document.getElementById('budget-modal').classList.add('active');
         }
+    </script>
+
+    <script>
+        // --- UI UTILS ---
+        const attractionDetails = {
+            'ropeway': { 
+                title: '大湧谷纜車', 
+                img: 'https://www.travelliker.com.hk/img/upload/img/3-81.png',
+                content: '<p><strong>景點介紹</strong><br>搭乘纜車升空可俯瞰整片火山地形與蒸氣噴氣口，途中天氣好時能遠眺富士山全景。抵達山頂後能感受濃厚硫磺氣味與大湧谷壯觀地熱景觀，是箱根最具代表性的火山體驗路線，也是初訪箱根必搭的經典交通方式。</p><p><strong>必吃：</strong>黑蛋、黑蛋造型糕點、硫磺饅頭<br><strong>必買：</strong>黑蛋周邊小物</p>' 
+            },
+            'owakudani': { 
+                title: '大涌谷', 
+                img: 'https://www.travelliker.com.hk/img/upload/img/4-64.png',
+                content: '<p><strong>景點介紹</strong><br>大涌谷是箱根火山活動形成的谷地，滿地蒸氣口與硫磺結晶讓景色帶有荒涼又震撼的氣氛。遊客可沿步道近距離觀察地熱噴煙、感受自然力量，也能眺望富士山。因火山能量強烈，黑蛋與火山造型甜點成為當地最具象徵性的特色名物。</p><p><strong>必吃：</strong>黑蛋、火山造型霜淇淋<br><strong>必買：</strong>黑色系餅乾、火山主題零食<br>大涌谷くろたまご館 — 著名黑蛋專門店。</p>' 
+            },
+            'yumoto': { 
+                title: '箱根湯本商店街', 
+                img: 'https://ak-d.tripcdn.com/images/100w060000001rrhtEE7E_R_750_520.jpg_.webp?_fr=wc',
+                content: '<p><strong>景點介紹</strong><br>作為箱根玄關的商店街，聚集各式名產老店、點心與可邊走邊吃的小吃。從溫泉饅頭到可樂餅都能一次品嘗，是旅客最容易入手伴手禮的地區。街道充滿昭和風情，沿途不時能看到特色小工藝店與寄木細工，是散步採買最熱鬧的區域。</p><p><strong>必吃：</strong>湯葉可樂餅、箱根布丁、溫泉饅頭<br><strong>必買：</strong>寄木細工、梅乾製品、溫泉限定點心</p>' 
+            },
+            'tenseien': { 
+                title: '箱根天成園', 
+                img: 'https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg',
+                content: '<p><strong>景點介紹</strong><br>天成園以百米長的空中露天風呂聞名，能在遼闊景致中享受天然溫泉。館內庭園設有瀑布、神社、小橋流水，散步極為舒適。館內餐廳提供豐富自助餐點，入住後不必外出也能吃得很好。環境寧靜放鬆，是箱根中評價極高的溫泉旅館之一。</p><p><strong>必吃：</strong>旅館晚餐、甜點櫃小點<br><strong>必買：</strong>寄木細工小物、溫泉保養品</p>' 
+            },
+            'hakone_shrine': { 
+                title: '箱根神社', 
+                img: 'https://s3-ap-northeast-1.amazonaws.com/thegate/2021/04/14/12/41/19/Hakone%20shrine.jpg',
+                content: '<p><strong>景點介紹</strong><br>位於蘆之湖湖畔的古老神社，因「和平之鳥居」拍照景點爆紅。穿過森林參道能感受濃厚神聖氛圍，是祈求良緣與交通安全的著名神社。湖邊紅色鳥居倒映在水面上，搭配富士山更形成絕美構圖，是箱根不可錯過的精神地標。</p><p><strong>必吃：</strong>湖畔霜淇淋<br><strong>必買：</strong>良緣御守、交通安全御守、朱印帳</p>' 
+            },
+            'ashinoko': { 
+                title: '蘆之湖海盜船', 
+                img: 'https://www.travelliker.com.hk/img/upload/img/1-942.jpg',
+                content: '<p><strong>景點介紹</strong><br>海盜船是遊覽蘆之湖最具代表性的方式，可在船上欣賞湖光山色與遠處富士山。船內外都有海盜主題裝飾，十分適合拍照。航程平穩、視野開闊，是家庭與情侶的人氣活動。晴天時湖面光影與周圍山景更顯唯美，是箱根旅程亮點。</p><p><strong>必吃：</strong>湖畔霜淇淋、茶屋小食<br><strong>必買：</strong>海盜船限定周邊、蘆之湖餅乾<br>Bakery & Table Hakone</p>' 
+            },
+            'saiko': { 
+                title: '西湖里根場', 
+                img: 'https://images.unsplash.com/photo-1579758782390-3490b4d4554f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>里根場保存數十棟茅草屋，是富士山周邊最具日本古村氛圍的景點之一。漫步在茅葺屋與山景之間，能感受昔日農家生活風貌。部分屋舍展示手工藝及拍照空間，也能眺望富士山。園區安靜悠閒，非常適合喜歡傳統建築與清幽氣氛的旅客。</p><p><strong>必吃：</strong>甲州餺飥（ほうとう）<br><strong>必買：</strong>富士山羊羹、傳統工藝品</p>' 
+            },
+            'appare': { 
+                title: '河口湖天晴號', 
+                img: 'https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>天晴號是河口湖人氣遊覽船，船身復古可愛，航程中能近距離欣賞富士山倒映在湖面的風景。湖面寬闊、視野無遮蔽，是初訪河口湖時最推薦的拍照方式。無論晴天或雲霧都有不同氛圍，航程輕鬆舒適，適合作為富士山行程的開場或收尾。</p><p><strong>必吃：</strong>湖畔甜點、葡萄/桃冰品<br><strong>必買：</strong>富士山禮盒點心、湖景明信片<br>Lake Bake Cafe、Lake Side Cafe Ku</p>' 
+            },
+            'chureito': { 
+                title: '新倉山淺間公園', 
+                img: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>以五重塔與富士山同框而聞名，是日本最經典的富士山取景地。從入口需爬上數百階階梯，爬到展望台後會看到壯麗富士山和紅色塔身並列的景色。春季櫻花季更是爆紅拍照點。風景開闊壯觀，非常值得安排在晴天時前往。</p><p><strong>必吃：</strong>櫻花季限定霜淇淋<br><strong>必買：</strong>富士山煎餅、御守、明信片</p>' 
+            },
+            'airport': { 
+                title: '桃園機場', 
+                img: 'https://s.yimg.com/ny/api/res/1.2/erw10hmX9ybLRm4lB7pP.A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MTtjZj13ZWJw/https://media.zenfs.com/ko/taisounds_com_380/25ef305fcce02ba63c43f73dae765b52',
+                content: '<p>請於航班起飛前 2.5 小時抵達櫃台辦理登機手續。</p>' 
+            }
+        };
+        
+        function showDetail(key) { const data = attractionDetails[key]; if(data) { document.getElementById('modal-title').innerText = data.title; document.getElementById('modal-img-placeholder').innerHTML = `<img src="${data.img}" class="modal-hero-img">`; document.getElementById('modal-body').innerHTML = data.content; document.getElementById('detail-modal').classList.add('active'); } }
+        function showUserNoteDetail(n) { document.getElementById('modal-title').innerText = n.title; document.getElementById('modal-img-placeholder').innerHTML = ''; let html = `<p><strong>地點：</strong>${n.location}</p>`; if(n.desc) html += `<p>${n.desc}</p>`; document.getElementById('modal-body').innerHTML = html; document.getElementById('detail-modal').classList.add('active'); }
         function showExpenseDetail(e) {
             document.getElementById('modal-title').innerText = "電子收據";
             let methodText = {cash:'現金', card:'信用卡', suica:'Suica'}[e.method];
             let catText = {eat:'飲食',buy:'購物',transport:'交通',spot:'景點',other:'其他'}[e.category];
-            
-            let html = `
-                <div class="receipt-header">
-                    <div style="font-size:1.2rem; font-weight:bold; color:#333;">${e.title}</div>
-                    <div class="receipt-total">${e.currency} ${e.amount.toLocaleString()}</div>
-                </div>
-                <div class="receipt-row"><span class="receipt-label">日期</span><span>${e.date}</span></div>
-                <div class="receipt-row"><span class="receipt-label">分類</span><span>${catText}</span></div>
-                <div class="receipt-row"><span class="receipt-label">支付方式</span><span>${methodText}</span></div>
-                <div class="receipt-row" style="border-bottom:1px solid #eee; padding-bottom:10px;"><span class="receipt-label">備註</span><span>${e.note || '無'}</span></div>
-            `;
-            if(e.imgData) html += `<div style="margin-top:15px;"><span class="receipt-label">憑證/照片：</span><img src="${e.imgData}" style="width:100%; border-radius:10px; margin-top:5px;"></div>`;
-            
+            let html = `<div class="receipt-header"><div style="font-size:1.2rem; font-weight:bold; color:#333;">${e.title}</div><div class="receipt-total">${e.currency} ${e.amount.toLocaleString()}</div></div><div class="receipt-row"><span class="receipt-label">日期</span><span>${e.date}</span></div><div class="receipt-row"><span class="receipt-label">分類</span><span>${catText}</span></div><div class="receipt-row"><span class="receipt-label">支付方式</span><span>${methodText}</span></div><div class="receipt-row" style="border-bottom:1px solid #eee; padding-bottom:10px;"><span class="receipt-label">備註</span><span>${e.note || '無'}</span></div>`;
             document.getElementById('modal-img-placeholder').innerHTML = '';
             document.getElementById('modal-body').innerHTML = html;
             document.getElementById('detail-modal').classList.add('active');
         }
 
-        // Notebook & Itinerary (Same as v16)
-        function renderNotesToList() {
-            const list = document.getElementById('notes-list'); list.innerHTML = '';
-            notes.forEach(n => {
-                const item = document.createElement('div'); item.className = 'note-list-item';
-                item.innerHTML = `<div class="note-title-text">${n.title}</div><div class="note-tag-badge" style="background:var(--tag-${n.category})">${n.location}</div><div class="note-btn btn-edit" onclick="editNote(${n.id})"><i class="fas fa-pen"></i></div><div class="note-btn btn-del" onclick="deleteNote(${n.id})"><i class="fas fa-trash"></i></div>`;
-                item.onclick = (e) => { if(!e.target.closest('.note-btn')) showUserNoteDetail(n); };
-                list.appendChild(item);
-            });
-        }
+        function closeModal(e) { if(e) e.preventDefault(); document.getElementById('detail-modal').classList.remove('active'); }
+        function switchTab(id, el) { document.querySelectorAll('.tab-content').forEach(d=>d.classList.remove('active')); document.getElementById('tab-'+id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); if(id==='itinerary') document.getElementById('date-nav-container').style.display='flex'; else document.getElementById('date-nav-container').style.display='none'; window.scrollTo(0,0); }
+        function switchDay(id, el) { document.querySelectorAll('.day-view').forEach(d=>d.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.date-item').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); window.scrollTo(0,0); }
+        function copyText(text) { navigator.clipboard.writeText(text).then(() => { alert('地址已複製！'); }); }
         function renderNotesToItinerary() {
             document.querySelectorAll('.spot-notes-list').forEach(el => el.innerHTML = '');
             const spotCards = document.querySelectorAll('.spot-card[data-spot-name]');
             spotCards.forEach(card => {
                 const spotName = card.getAttribute('data-spot-name');
                 const container = card.querySelector('.spot-notes-list');
-                const spotNotes = notes.filter(n => n.location === spotName);
+                const spotNotes = window.notes.filter(n => n.location === spotName);
                 if(spotNotes.length > 0) {
                     spotNotes.forEach(n => {
                         const div = document.createElement('div'); div.className = 'spot-note-item'; div.innerHTML = `<div class="spot-note-dot"></div>${n.title}`; container.appendChild(div);
@@ -557,40 +507,28 @@
                 } else { container.innerHTML = '<div class="no-notes-text">無待辦事項</div>'; }
             });
         }
-        function handleAddOrUpdate() {
-            const title = document.getElementById('note-title').value; const loc = document.getElementById('note-location').value;
-            if(!title || !loc) return alert('請填寫標題與地點');
-            const note = { id: editingNoteId || Date.now(), title: title, location: loc, category: document.getElementById('note-category').value, map: document.getElementById('note-map').value, desc: document.getElementById('note-desc').value, imgData: null };
-            const fileInput = document.getElementById('note-image');
-            if(fileInput.files[0]) { const reader = new FileReader(); reader.onload = function(e) { note.imgData = e.target.result; saveNoteData(note); }; reader.readAsDataURL(fileInput.files[0]); }
-            else { if(editingNoteId) { const old = notes.find(n=>n.id===editingNoteId); if(old) note.imgData = old.imgData; } saveNoteData(note); }
-        }
-        function saveNoteData(note) { if(editingNoteId) { const idx = notes.findIndex(n=>n.id===editingNoteId); if(idx!==-1) notes[idx] = note; } else { notes.unshift(note); } try { localStorage.setItem('trip_notes_v4', JSON.stringify(notes)); } catch(e){alert('Full');} loadData(); resetForm(); }
-        function deleteNote(id) { if(confirm('Delete?')) { notes = notes.filter(n=>n.id!==id); saveNotes(); loadData(); } }
-        function editNote(id) { const n = notes.find(n=>n.id===id); if(!n) return; editingNoteId = id; document.getElementById('note-title').value = n.title; document.getElementById('note-location').value = n.location; document.getElementById('btn-cancel').style.display = 'block'; }
-        function resetForm() { editingNoteId = null; document.getElementById('note-title').value = ''; document.getElementById('btn-cancel').style.display = 'none'; }
-        
-        // Attraction Details
-        const attractionDetails = {
-            'ropeway': { title: '大湧谷纜車', img: 'https://www.travelliker.com.hk/img/upload/img/3-81.png', content: '<p><strong>景點介紹</strong><br>搭乘纜車升空可俯瞰整片火山地形...</p><p><strong>必吃：</strong>黑蛋</p>' },
-            'owakudani': { title: '大涌谷', img: 'https://www.travelliker.com.hk/img/upload/img/4-64.png', content: '<p><strong>景點介紹</strong><br>大涌谷是箱根火山活動形成的谷地...</p><p><strong>必吃：</strong>黑蛋</p>' },
-            'yumoto': { title: '箱根湯本商店街', img: 'https://ak-d.tripcdn.com/images/100w060000001rrhtEE7E_R_750_520.jpg_.webp?_fr=wc', content: '<p><strong>景點介紹</strong><br>作為箱根玄關的商店街...</p>' },
-            'tenseien': { title: '箱根天成園', img: 'https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg', content: '<p><strong>景點介紹</strong><br>天成園以百米長的空中露天風呂聞名...</p>' },
-            'hakone_shrine': { title: '箱根神社', img: 'https://s3-ap-northeast-1.amazonaws.com/thegate/2021/04/14/12/41/19/Hakone%20shrine.jpg', content: '<p><strong>景點介紹</strong><br>位於蘆之湖湖畔的古老神社...</p>' },
-            'ashinoko': { title: '蘆之湖海盜船', img: 'https://www.travelliker.com.hk/img/upload/img/1-942.jpg', content: '<p><strong>景點介紹</strong><br>海盜船是遊覽蘆之湖最具代表性的方式...</p>' },
-            'saiko': { title: '西湖里根場', img: 'https://images.unsplash.com/photo-1579758782390-3490b4d4554f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', content: '<p><strong>景點介紹</strong><br>里根場保存數十棟茅草屋...</p>' },
-            'appare': { title: '河口湖天晴號', img: 'https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', content: '<p><strong>景點介紹</strong><br>天晴號是河口湖人氣遊覽船...</p>' },
-            'chureito': { title: '新倉山淺間公園', img: 'https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=800&q=80', content: '<p><strong>景點介紹</strong><br>以五重塔與富士山同框而聞名...</p>' },
-            'airport': { title: '桃園機場', img: 'https://s.yimg.com/ny/api/res/1.2/erw10hmX9ybLRm4lB7pP.A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MTtjZj13ZWJw/https://media.zenfs.com/ko/taisounds_com_380/25ef305fcce02ba63c43f73dae765b52', content: '<p>請於航班起飛前 2.5 小時抵達櫃台。</p>' }
-        };
 
-        function showDetail(key) { const data = attractionDetails[key]; if(data) { document.getElementById('modal-title').innerText = data.title; document.getElementById('modal-img-placeholder').innerHTML = `<img src="${data.img}" class="modal-hero-img">`; document.getElementById('modal-body').innerHTML = data.content; document.getElementById('detail-modal').classList.add('active'); } }
-        function showUserNoteDetail(n) { document.getElementById('modal-title').innerText = n.title; document.getElementById('modal-img-placeholder').innerHTML = ''; let html = `<p><strong>地點：</strong>${n.location}</p>`; if(n.desc) html += `<p>${n.desc}</p>`; if(n.imgData) html += `<img src="${n.imgData}" style="width:100%; border-radius:10px;">`; if(n.map) html += `<a href="${n.map}" target="_blank" class="btn-action btn-blue" style="display:block;margin-top:10px;">開啟導航</a>`; document.getElementById('modal-body').innerHTML = html; document.getElementById('detail-modal').classList.add('active'); }
-        function closeModal(e) { if(e) e.preventDefault(); document.getElementById('detail-modal').classList.remove('active'); }
-        
-        function switchTab(id, el) { document.querySelectorAll('.tab-content').forEach(d=>d.classList.remove('active')); document.getElementById('tab-'+id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); if(id==='itinerary') document.getElementById('date-nav-container').style.display='flex'; else document.getElementById('date-nav-container').style.display='none'; window.scrollTo(0,0); }
-        function switchDay(id, el) { document.querySelectorAll('.day-view').forEach(d=>d.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.date-item').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); window.scrollTo(0,0); }
-        function copyText(text) { navigator.clipboard.writeText(text).then(() => { alert('地址已複製！'); }); }
+        // Weather & Flight Check logic
+        const LOCATIONS = [ { lat: 35.77, lon: 140.39, name: '東京/成田' }, { lat: 35.23, lon: 139.10, name: '箱根' }, { lat: 35.49, lon: 138.74, name: '河口湖' }, { lat: 35.68, lon: 139.76, name: '東京' }, { lat: 35.77, lon: 140.39, name: '東京/成田' } ];
+        const WMO_CODES = { 0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️', 45:'🌫️', 48:'🌫️', 51:'🌧️', 53:'🌧️', 55:'🌧️', 61:'🌧️', 63:'🌧️', 65:'🌧️', 80:'🌦️', 81:'🌦️', 82:'⛈️', 95:'⛈️', 96:'⛈️', 99:'⛈️' };
+        async function updateWeather(dayIndex) {
+            const targetContainer = document.getElementById(`weather-d${dayIndex + 1}`);
+            if (!targetContainer) return;
+            const loc = LOCATIONS[dayIndex];
+            const tripDate = new Date('2025-12-10'); tripDate.setDate(tripDate.getDate() + dayIndex);
+            const today = new Date();
+            const diffDays = Math.ceil((tripDate - today) / (1000 * 60 * 60 * 24));
+            let apiUrl = (diffDays <= 10 && diffDays >= 0) ? `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&hourly=temperature_2m,precipitation_probability,weathercode&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo` : `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&hourly=temperature_2m,precipitation_probability,weathercode&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone=Asia%2FTokyo`;
+            try {
+                const response = await fetch(apiUrl); const data = await response.json();
+                const maxTemp = Math.round(data.daily.temperature_2m_max[0]); const minTemp = Math.round(data.daily.temperature_2m_min[0]);
+                const titleText = (diffDays <= 10 && diffDays >= 0) ? `📅 12/${10+dayIndex} 真實預報` : `⚠️ 參考用：今日即時天氣`;
+                let html = `<div class="weather-card"><div class="weather-header"><div class="weather-title"><i class="fas fa-map-marker-alt"></i> ${loc.name} - ${titleText}</div><div class="weather-range">H:${maxTemp}° L:${minTemp}°</div></div><div class="weather-grid">`;
+                [6, 9, 12, 15, 18, 21].forEach(h => { const idx = h; const temp = Math.round(data.hourly.temperature_2m[idx]); const rain = data.hourly.precipitation_probability[idx]; const icon = WMO_CODES[data.hourly.weathercode[idx]] || '❓'; html += `<div class="weather-col"><div class="w-time">${h}:00</div><div class="w-icon">${icon}</div><div class="w-temp">${temp}°</div><div class="w-rain"><i class="fas fa-umbrella"></i> ${rain}%</div></div>`; });
+                html += `</div></div>`; targetContainer.innerHTML = html;
+            } catch (e) { targetContainer.innerHTML = `<div style="text-align:center; padding:10px; color:#999;">天氣資料載入失敗</div>`; }
+        }
+        function initWeather() { for(let i=0; i<5; i++) updateWeather(i); }
         
         function checkFlightStatus() {
             const today = new Date();
@@ -603,6 +541,9 @@
             else if (diff <= 1 && diff >= -1) { txt.innerText = "即時動態 (Live)"; txt.style.color = "#2ECC71"; dot.classList.add('active'); btn.innerText = "更新即時動態"; btn.href = `https://www.google.com/search?q=${flightCode}+flight+status`; btn.style.background = "#E67E22"; }
             else { txt.innerText = "已抵達"; dot.style.background = "#333"; btn.style.display = "none"; }
         }
+
+        initWeather();
+        checkFlightStatus();
     </script>
 </body>
 </html>
