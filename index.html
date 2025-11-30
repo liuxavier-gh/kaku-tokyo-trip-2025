@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* CSS 樣式維持原樣，為了版面簡潔省略重複部分，直接使用您熟悉的樣式 */
+        /* CSS 樣式 */
         :root { --primary-text: #333; --secondary-text: #666; --accent-brown: #8B5A2B; --card-bg: #FFF; --bg-color: #F5F5F7; --dot-color: #F4D03F; --radius: 16px; --shadow: 0 4px 12px rgba(0,0,0,0.08); --btn-map: #428045; --btn-edit: #2980B9; --btn-delete: #E74C3C; --tag-eat: #E67E22; --tag-buy: #9B59B6; --tag-spot: #2ECC71; --tag-todo: #E74C3C; --tag-transport: #3498DB; --tag-other: #95A5A6; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--primary-text); padding-bottom: 90px; overflow-x: hidden; }
@@ -58,6 +58,18 @@
         .shop-list-compact { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; } .shop-card { min-width: 120px; background: #f9f9f9; border-radius: 8px; padding: 8px; font-size: 0.8rem; } .shop-card img { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; margin-bottom: 5px; }
         .expense-list-item { background: white; border-radius: 12px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 12px; border-left: 5px solid transparent; cursor: pointer; transition: transform 0.1s; } .expense-list-item:active { transform: scale(0.98); } .expense-info { flex: 1; margin-right: 5px; } .expense-title { font-size: 1rem; font-weight: bold; color: #333; } .expense-meta { font-size: 0.75rem; color: #777; display: flex; gap: 6px; align-items: center; margin-top: 4px; } .expense-amount { font-family: 'Roboto Mono', monospace; font-weight: bold; font-size: 1.1rem; color: #2C3E50; } .payment-icon { width: 36px; height: 36px; border-radius: 50%; background: #F0F3F4; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #555; border: 1px solid #E0E0E0; }
         .receipt-header { text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 15px; margin-bottom: 15px; } .receipt-total { font-size: 2rem; font-weight: bold; color: var(--primary-text); font-family: 'Roboto Mono'; margin: 10px 0; } .receipt-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; color: #555; } .receipt-label { color: #999; }
+        
+        /* NEW: SHIPPING INFO STYLES */
+        .shipping-box { background: #fff; padding: 15px; border-radius: 16px; margin-top: 20px; border-left: 5px solid #2980B9; box-shadow: var(--shadow); }
+        .shipping-header { font-size: 1rem; font-weight: bold; color: #2980B9; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .shipping-note { font-size: 0.85rem; color: #E74C3C; margin-bottom: 15px; padding: 8px; background: #F9EBEA; border-radius: 8px; line-height: 1.5; }
+        .shipping-data-block { background: #F4F6F7; padding: 12px; border-radius: 8px; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; color: #333; white-space: pre-line; line-height: 1.6; border: 1px dashed #BDC3C7; position: relative; }
+        .btn-copy-shipping { position: absolute; top: 10px; right: 10px; background: #FFF; border: 1px solid #BDC3C7; color: #555; font-size: 0.75rem; padding: 4px 10px; border-radius: 15px; cursor: pointer; }
+        .btn-copy-shipping:active { background: #EEE; }
+
+        /* NEW: INPUT GROUP FOR MAP LINK */
+        .input-group { display: flex; gap: 5px; }
+        .btn-input-action { padding: 10px 15px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -148,7 +160,9 @@
                     <div class="form-group" style="flex:1;"><label class="form-label">地點</label><select id="note-location" class="form-control"><option value="">-- 請選擇 --</option><option value="大湧谷纜車">大湧谷纜車</option><option value="箱根天成園">箱根天成園</option><option value="箱根湯本商店街">箱根湯本商店街</option><option value="箱根神社">箱根神社</option><option value="大涌谷">大涌谷</option><option value="蘆之湖海盜船">蘆之湖海盜船</option><option value="西湖里根場">西湖里根場</option><option value="河口湖天晴號">河口湖天晴號</option><option value="新倉山淺間公園">新倉山淺間公園</option><option value="太陽城王子大飯店">太陽城王子大飯店</option><option value="其他">其他</option></select></div>
                     <div class="form-group" style="flex:1;"><label class="form-label">分類</label><select id="note-category" class="form-control"><option value="eat">吃</option><option value="buy">買</option><option value="spot">景點</option><option value="todo">待辦</option></select></div>
                 </div>
-                <div class="form-group"><label class="form-label">連結/地圖</label><input type="text" id="note-map" class="form-control"></div>
+                
+                <!-- Removed smart search input -->
+                <div class="form-group"><label class="form-label">連結/地圖</label><input type="text" id="note-map" class="form-control" placeholder="https://goo.gl/maps/..."></div>
                 <div class="form-group"><label class="form-label">說明</label><textarea id="note-desc" class="form-control"></textarea></div>
                 <div class="form-group"><label class="form-label">圖片</label><input type="file" id="note-image" class="form-control"></div>
                 <button onclick="handleAddOrUpdate()" class="btn-action btn-blue">儲存筆記</button>
@@ -176,6 +190,8 @@
             <div class="flight-row"><div><span class="flight-time-label">Departure</span><span class="flight-time-val">12/14 14:35</span></div><div style="text-align:right;"><span class="flight-time-label">Arrival</span><span class="flight-time-val">17:45</span></div></div>
             <div class="flight-status-bar"><div class="status-indicator"><div id="flight-dot-101" class="status-dot"></div><span id="flight-status-text-101">Checking...</span></div><a id="flight-check-btn-101" href="#" target="_blank" class="btn-flight-check">更新動態</a></div>
         </div>
+        
+        <!-- HOTEL INFO -->
         <div class="section-header">住宿資訊</div>
         <div class="hotel-info-card">
             <div class="hotel-name">箱根天成園</div>
@@ -188,6 +204,24 @@
             <div class="hotel-detail-row"><i class="fas fa-map-marker-alt hotel-icon"></i><div class="hotel-text">〒170-8440 東京都豊島区東池袋3-1-5</div></div>
             <div class="hotel-detail-row"><i class="fas fa-phone hotel-icon"></i><div class="hotel-text">03-3988-1111</div></div>
             <div class="hotel-actions"><a href="#" onclick="copyText('〒170-8440 東京都豊島区東池袋3-1-5'); return false;" class="btn-hotel btn-copy"><i class="far fa-copy"></i> 複製地址</a><a href="tel:0339881111" class="btn-hotel btn-call"><i class="fas fa-phone"></i> 撥打電話</a></div>
+        </div>
+        
+        <!-- SHIPPING INFO -->
+        <div class="section-header">📦 行李/快遞收件資訊</div>
+        <div class="shipping-box">
+            <div class="shipping-header"><i class="fas fa-shipping-fast"></i> 寄送注意事項</div>
+            <div class="shipping-note">
+                1. 物品必須付費完畢，飯店不會幫客人代墊費用。<br>
+                2. 如能事先知道箱子大小，可先提供以便先註記櫃檯。
+            </div>
+            <div class="shipping-data-block">
+                <div id="shipping-data">
+団体番号：旅比べ-251210-KE
+添乗員：戴惠茹 気付け
+電話：090-9829-0980
+                </div>
+                <button class="btn-copy-shipping" onclick="copyText(document.getElementById('shipping-data').innerText)"><i class="far fa-copy"></i> 一鍵複製收件資料</button>
+            </div>
         </div>
     </div>
 
@@ -334,7 +368,11 @@
                 if(n.category === 'spot') { tagColor = 'var(--tag-spot)'; tagText = '景點'; }
                 if(n.category === 'todo') { tagColor = 'var(--tag-todo)'; tagText = '待辦'; }
                 
-                item.innerHTML = `<div class="note-title-text">${n.title}</div><div class="note-tag-badge" style="background:${tagColor}">${tagText}</div><div class="note-location-text">${n.location}</div><div class="note-btn btn-edit" onclick="editNote('${n.id}')"><i class="fas fa-pen"></i></div><div class="note-btn btn-del" onclick="deleteNote(event, '${n.id}')"><i class="fas fa-trash"></i></div>`;
+                let navBtnHTML = n.map 
+                    ? `<a href="${n.map}" target="_blank" class="note-btn btn-nav"><i class="fas fa-location-arrow"></i></a>`
+                    : ``;
+
+                item.innerHTML = `<div class="note-title-text">${n.title}</div><div class="note-tag-badge" style="background:${tagColor}">${tagText}</div><div class="note-location-text">${n.location}</div>${navBtnHTML}<div class="note-btn btn-edit" onclick="editNote('${n.id}')"><i class="fas fa-pen"></i></div><div class="note-btn btn-del" onclick="deleteNote(event, '${n.id}')"><i class="fas fa-trash"></i></div>`;
                 item.onclick = (e) => { if(!e.target.closest('.note-btn')) showUserNoteDetail(n); };
                 list.appendChild(item);
             });
@@ -541,9 +579,6 @@
             else if (diff <= 1 && diff >= -1) { txt.innerText = "即時動態 (Live)"; txt.style.color = "#2ECC71"; dot.classList.add('active'); btn.innerText = "更新即時動態"; btn.href = `https://www.google.com/search?q=${flightCode}+flight+status`; btn.style.background = "#E67E22"; }
             else { txt.innerText = "已抵達"; dot.style.background = "#333"; btn.style.display = "none"; }
         }
-
-        initWeather();
-        checkFlightStatus();
     </script>
 </body>
 </html>
