@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>烏拉呀哈東京迷路大作戰 (雲端版) | 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;700&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -13,8 +13,12 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; padding: 0; font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--primary-text); padding-bottom: 90px; overflow-x: hidden; }
         h1, h2, h3, h4, .serif-font { font-family: 'Noto Serif JP', serif; }
+        
+        /* HEADER */
         header { background: var(--card-bg); padding: 20px 20px 0 20px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
         .trip-title { text-align: center; font-size: 0.85rem; letter-spacing: 0.15em; color: var(--secondary-text); margin-bottom: 5px; text-transform: uppercase; font-weight: 500; }
+        
+        /* DATE SCROLLER */
         .date-scroller { display: flex; overflow-x: auto; gap: 15px; padding: 15px 0; scrollbar-width: none; } .date-scroller::-webkit-scrollbar { display: none; }
         .date-item { min-width: 60px; display: flex; flex-direction: column; align-items: center; opacity: 0.4; transition: 0.3s; cursor: pointer; padding: 5px; border-radius: 12px; }
         .date-item.active { opacity: 1; transform: scale(1.05); color: #333; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
@@ -23,6 +27,8 @@
         .date-item .day-num { font-size: 1.3rem; font-family: 'Noto Serif JP', serif; font-weight: bold; }
         .container { padding: 0 16px; max-width: 600px; margin: 0 auto; }
         .tab-content, .day-view { display: none; animation: fadeIn 0.3s; } .tab-content.active, .day-view.active { display: block; }
+
+        /* WEATHER */
         .weather-scroll-container { margin: 20px 0; } .weather-card { background: #FFFFFF; border-radius: 16px; padding: 15px; margin-bottom: 20px; color: var(--primary-text); box-shadow: var(--shadow); border: 1px solid #EAEAEA; }
         .weather-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #F0F0F0; padding-bottom: 8px; }
         .weather-title { font-weight: bold; font-size: 0.95rem; display:flex; align-items:center; gap:6px; color: var(--accent-brown); }
@@ -30,6 +36,8 @@
         .weather-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; text-align: center; }
         .weather-col { display: flex; flex-direction: column; align-items: center; background: #F9F9F9; border-radius: 8px; padding: 8px 2px; }
         .w-time { font-size: 0.7rem; margin-bottom: 4px; color: #888; } .w-icon { font-size: 1.2rem; margin-bottom: 4px; } .w-temp { font-size: 0.9rem; font-weight: bold; margin-bottom: 2px; color: #333; } .w-rain { font-size: 0.65rem; color: #5DADE2; display:flex; align-items:center; gap:2px; font-weight: 500; } .w-rain i { font-size:0.6rem; }
+
+        /* SPOT CARD (RESTYLED v29) */
         .spot-card { display: flex; background: var(--card-bg); border-radius: 18px; border: 1px solid #EAEAEA; overflow: hidden; margin-bottom: 18px; min-height: 120px; box-shadow: var(--shadow); position: relative; transition: transform 0.2s; } .spot-card:active { transform: scale(0.99); }
         .spot-left { width: 50px; display: flex; align-items: center; justify-content: center; flex-direction: row; position: relative; flex-shrink: 0; background-color: #FAFAFA; padding: 10px 0; } .spot-location-text { writing-mode: vertical-rl; text-orientation: upright; font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 1.1rem; color: var(--accent-brown); letter-spacing: 0.3em; line-height: 1; } .spot-divider { width: 4px; background-color: #D0D0D0; border-radius: 2px; height: 70%; position: absolute; right: 0; top: 15%; }
         .spot-content { flex: 1; padding: 14px 10px 14px 12px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
@@ -38,12 +46,36 @@
         .no-notes-text { font-size: 0.85rem; color: #BBB; font-style: normal; display: flex; align-items: center; } .no-notes-text::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #DDD; border-radius: 50%; margin-right: 8px; }
         .spot-image-container { width: 110px; flex-shrink: 0; position: relative; } .spot-image { width: 100%; height: 100%; object-fit: cover; mask-image: linear-gradient(to right, transparent 0%, black 10%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%); }
         .info-icon-small { font-size: 0.7rem; color: #999; border: 1px solid #ddd; border-radius: 50%; width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; vertical-align: middle; font-family: sans-serif; }
+
+        /* FLIGHT BOARD */
         .flight-board { background: #2C3E50; color: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3); position: relative; overflow: hidden; } .flight-board::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #E74C3C, #F1C40F, #3498DB); }
         .flight-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; } .flight-code { font-family: 'Roboto Mono', monospace; font-size: 1.8rem; font-weight: bold; letter-spacing: 1px; color: #ECF0F1; } .flight-route { display: flex; align-items: center; gap: 15px; font-size: 1.2rem; font-weight: bold; } .flight-time-label { font-size: 0.7rem; color: #95A5A6; text-transform: uppercase; display: block; margin-bottom: 2px;} .flight-time-val { font-family: 'Roboto Mono', monospace; font-size: 1.2rem; font-weight: bold; } .flight-icon { font-size: 1rem; color: #BDC3C7; transform: rotate(90deg); }
         .flight-status-bar { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center; } .status-indicator { font-size: 0.85rem; display: flex; align-items: center; gap: 6px; } .status-dot { width: 10px; height: 10px; border-radius: 50%; background: #95A5A6; } .status-dot.active { background: #2ECC71; animation: blink 1.5s infinite; } .btn-flight-check { background: #E67E22; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+
+        /* HOTEL INFO CARD */
         .hotel-info-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 15px; box-shadow: var(--shadow); border-left: 5px solid var(--accent-brown); } .hotel-name { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: bold; color: #2C3E50; margin-bottom: 10px; } .hotel-detail-row { display: flex; margin-bottom: 10px; align-items: start; } .hotel-icon { width: 24px; color: #95A5A6; font-size: 1rem; margin-top: 2px; } .hotel-text { flex: 1; font-size: 0.9rem; color: #555; line-height: 1.5; } .hotel-actions { display: flex; gap: 10px; margin-top: 15px; } .btn-hotel { flex: 1; padding: 8px; border-radius: 8px; text-align: center; font-size: 0.85rem; text-decoration: none; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; gap: 5px; } .btn-copy { background: #f9f9f9; color: #333; } .btn-call { background: #E8F8F5; color: #1ABC9C; border-color: #1ABC9C; }
+
+        /* MEAL & TRAVEL */
         .meal-card { background: #fff; padding: 12px 16px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; color: #555; box-shadow: var(--shadow); border-left: 5px solid var(--food-color); display: flex; align-items: center; } .meal-card i { color: var(--food-color); margin-right: 10px; font-size: 1.1rem; }
+        
+        /* TIMETABLE CARD */
+        .timetable-card { background: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; border: 1px solid #E0E0E0; }
+        .timetable-header { background: #F4F6F7; padding: 12px 15px; font-size: 0.95rem; font-weight: bold; color: #2C3E50; border-bottom: 1px solid #E0E0E0; display: flex; align-items: center; gap: 8px; }
+        .tt-grid-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; padding: 12px 15px; border-bottom: 1px dashed #EEE; align-items: center; }
+        .tt-grid-row:last-child { border-bottom: none; }
+        .tt-time-group { display: flex; flex-direction: column; align-items: flex-start; min-width: 110px; }
+        .tt-time { font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 0.9rem; color: #333; white-space: nowrap; }
+        .tt-duration { font-size: 0.75rem; color: #888; margin-top: 3px; display: flex; align-items: center; gap: 4px; } .tt-duration i { font-size: 0.7rem; }
+        .tt-info-group { display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+        .tt-train-name { font-weight: bold; font-size: 0.85rem; color: #2C3E50; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tt-train-sub { font-size: 0.7rem; color: #777; margin-top: 2px; white-space: nowrap; }
+        .tt-price-group { text-align: right; display: flex; flex-direction: column; align-items: flex-end; min-width: 60px; }
+        .tt-price { font-family: 'Roboto Mono', monospace; font-weight: bold; color: #E67E22; font-size: 0.95rem; }
+        .tt-tag { display: inline-block; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px; margin-top: 4px; font-weight: normal; white-space: nowrap; }
+        .tag-fast { background: #D4EFDF; color: #196F3D; } .tag-cheap { background: #FCF3CF; color: #9A7D0A; }
         .travel-time-container { display: flex; justify-content: center; margin: -25px 0 12px 0; position: relative; z-index: 0; } .travel-time-badge { background: #F0F2F5; color: #7F8C8D; font-size: 0.7rem; font-weight: bold; padding: 4px 14px; border-radius: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 2px solid #FFF; } .travel-line { position: absolute; top: -20px; bottom: 0; left: 50%; width: 2px; background: linear-gradient(to bottom, #ccc 50%, transparent 0%); background-size: 2px 10px; z-index: -1; }
+
+        /* NOTEBOOK & OTHERS */
         .form-card { background: white; padding: 20px; border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 20px; } .form-group { margin-bottom: 15px; } .form-label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #555; } .form-control { width: 100%; padding: 10px; border: 1px solid #eee; border-radius: 8px; background: #fafafa; }
         .note-list-item { background: white; border-radius: 10px; padding: 12px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f0f0f0; } .note-title-text { flex-grow: 1; font-weight: bold; color: #333; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .note-tag-badge { font-size: 0.65rem; color: white; padding: 3px 8px; border-radius: 6px; font-weight: bold; flex-shrink: 0; } .note-location-text { font-size: 0.75rem; color: #999; flex-shrink: 0; } .note-btn { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; margin-left: 2px; flex-shrink: 0; cursor: pointer; } .btn-nav { background: #E8F5E9; color: var(--btn-map); } .btn-edit { background: #EBF5FB; color: var(--btn-edit); } .btn-del { background: #FDEDEC; color: var(--btn-delete); }
         .btn-action { width: 100%; padding: 12px; border-radius: 12px; text-align: center; font-weight: 600; cursor: pointer; border: none; margin-top: 5px; } .btn-blue { background: var(--primary-text); color: white; } .btn-gray { background: #95A5A6; color: white; }
@@ -67,86 +99,14 @@
         .btn-copy-shipping { position: absolute; top: 10px; right: 10px; background: #FFF; border: 1px solid #BDC3C7; color: #555; font-size: 0.75rem; padding: 4px 10px; border-radius: 15px; cursor: pointer; }
         .btn-copy-shipping:active { background: #EEE; }
         
-        /* FLIGHT OPTION CARDS */
-        .flight-option-card {
-            background: #F8F9FA;
-            border: 1px solid #E0E0E0;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 12px;
-        }
-        .flight-option-title {
-            font-weight: bold;
-            font-size: 1rem;
-            color: #2C3E50;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .flight-option-tag {
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: #eee;
-            color: #555;
-        }
-        .tag-fast { background: #D4EFDF; color: #196F3D; }
-        .tag-cheap { background: #FCF3CF; color: #9A7D0A; }
-        .flight-option-detail {
-            font-size: 0.85rem;
-            color: #555;
-            line-height: 1.6;
-        }
+        /* Tiny nav button */
+        .tiny-nav-btn { display: inline-flex; align-items: center; gap: 4px; background: #E8F5E9; color: var(--btn-map); padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; text-decoration: none; font-weight: bold; border: 1px solid #C8E6C9; margin-top: 8px; width: fit-content; }
         
-        /* TIMETABLE CARD STYLES */
-        .timetable-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 0;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 15px;
-            border: 1px solid #E0E0E0;
-        }
-        .timetable-header {
-            background: #F4F6F7;
-            padding: 10px 15px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #2C3E50;
-            border-bottom: 1px solid #E0E0E0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .timetable-row {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            border-bottom: 1px dashed #EEE;
-        }
-        .timetable-row:last-child { border-bottom: none; }
-        .tt-time { min-width: 105px; font-family: 'Roboto Mono', monospace; font-weight: bold; font-size: 0.95rem; color: #333; white-space: nowrap; }
-        .tt-arrow { color: #CCC; margin: 0 8px; font-size: 0.8rem; }
-        .tt-info { flex: 1; }
-        .tt-type { font-size: 0.85rem; font-weight: bold; color: #333; display: block; }
-        .tt-sub { font-size: 0.75rem; color: #777; margin-top: 2px; display: block; }
-        .tt-price { font-family: 'Roboto Mono', monospace; font-weight: bold; color: #E67E22; font-size: 0.9rem; }
-        .tt-tag { display: inline-block; font-size: 0.65rem; padding: 1px 6px; border-radius: 4px; margin-left: 5px; font-weight: normal; }
-        
-        /* Tiny nav button for Shigekuni card */
-        .tiny-nav-btn {
-            display: inline-flex; align-items: center; gap: 4px;
-            background: #E8F5E9; color: var(--btn-map);
-            padding: 4px 10px; border-radius: 12px;
-            font-size: 0.75rem; text-decoration: none; font-weight: bold;
-            border: 1px solid #C8E6C9; margin-top: 5px;
-        }
+        .maintenance-container { text-align: center; padding-top: 100px; padding-bottom: 40px; color: #95A5A6; } .maintenance-icon-wrapper { position: relative; display: inline-block; margin-bottom: 20px; } .maintenance-main-icon { font-size: 5rem; color: #BDC3C7; } .maintenance-sub-icon { font-size: 2.5rem; position: absolute; bottom: -10px; right: -10px; color: #F39C12; background: #fff; border-radius: 50%; padding: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
-    <!-- USAGI - Click to open budget -->
     <div class="usagi-patrol" onclick="openBudgetForm()">
         <img src="https://picx.zhimg.com/v2-a5881db720f3e30474da551e4e84ad59_b.webp" alt="Usagi">
     </div>
@@ -163,7 +123,6 @@
         </div>
     </header>
 
-    <!-- ITINERARY -->
     <div id="tab-itinerary" class="tab-content active container">
         <!-- Day 1 (Same as v23) -->
         <div id="day1" class="day-view active">
@@ -189,23 +148,43 @@
             <div class="spot-card" data-spot-name="箱根天成園"><div class="spot-left"><div class="spot-location-text">神奈川</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('tenseien')"><div class="spot-title">箱根天成園 (續住) <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-tenseien_d2"></div></div><div class="spot-image-container"><img src="https://www.timesclub.jp/sp/tanomachi_ex/kanagawa/hakone/images/009_ph002.jpg" class="spot-image"></div></div>
         </div>
 
-        <!-- Day 3 (Same as v23) -->
+        <!-- Day 3 (12/12) -->
         <div id="day3" class="day-view">
             <div id="weather-d3"></div>
             <div class="spot-card" data-spot-name="箱根天成園"><div class="spot-left"><div class="spot-location-text">出發</div><div class="spot-divider"></div></div><div class="spot-content"><div class="spot-title">退房前往河口湖</div><div class="spot-notes-list"><div class="no-notes-text">車程約 1小時20分</div></div></div><div class="spot-image-container"><img src="201498fe_z.jpg" class="spot-image" style="opacity:0.5"></div></div>
             <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 1小時20分</div></div>
-            <div class="spot-card" data-spot-name="西湖里根場"><div class="spot-left"><div class="spot-location-text">山梨</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('saiko')"><div class="spot-title">西湖里根場 <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-saiko"></div></div><div class="spot-image-container"><img src="https://images.unsplash.com/photo-1579758782390-3490b4d4554f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="spot-image"></div></div>
+            <div class="spot-card" data-spot-name="西湖里根場"><div class="spot-left"><div class="spot-location-text">山梨</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('saiko')"><div class="spot-title">西湖里根場 <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-saiko"></div></div><div class="spot-image-container"><img src="https://a.travel-assets.com/findyours-php/viewfinder/images/res70/490000/490485-lake-saiko-iyashi-no-sato-nenba.jpg" class="spot-image"></div></div>
             <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 30分</div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>午餐：</strong> 河口湖特色料理</div>
-            <div class="spot-card" data-spot-name="河口湖天晴號"><div class="spot-left"><div class="spot-location-text">山梨</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('appare')"><div class="spot-title">河口湖天晴號 <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-appare"></div></div><div class="spot-image-container"><img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="spot-image"></div></div>
+            <div class="spot-card" data-spot-name="河口湖天晴號"><div class="spot-left"><div class="spot-location-text">山梨</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('appare')"><div class="spot-title">河口湖天晴號 <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-appare"></div></div><div class="spot-image-container"><img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1280,h_850/w_79,x_14,y_14,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/kffhopbnc8toztxlsekv/%E5%AF%8C%E5%A3%AB%E5%B1%B1%E6%B2%B3%E5%8F%A3%E6%B9%96%E5%A4%A7%E7%9F%B3%E5%85%AC%E5%9C%92%E5%9C%B0%E9%9C%87%E9%AB%94%E9%A9%97%E9%A4%A8%E5%A4%A9%E6%99%B4%E6%AD%A6%E5%B0%87%E8%88%B9%E7%B6%B2%E7%B4%85%E9%BA%A5%E7%95%B6%E5%8B%9E%E4%B8%80%E6%97%A5%E9%81%8A%EF%BC%88%E5%90%AB%E5%8D%88%E9%A4%90%EF%BC%89%EF%BD%9C4~9%E4%BA%BA%E7%B2%BE%E5%93%81%E5%B0%8F%E5%9C%98.webp" class="spot-image"></div></div>
             <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 20分</div></div>
             <div class="spot-card" data-spot-name="新倉山淺間公園"><div class="spot-left"><div class="spot-location-text">山梨</div><div class="spot-divider"></div></div><div class="spot-content" onclick="showDetail('chureito')"><div class="spot-title">新倉山淺間公園 <span class="info-icon-small">i</span></div><div class="spot-notes-list" id="notes-chureito"></div></div><div class="spot-image-container"><img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=800&q=80" class="spot-image"></div></div>
             <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-car-side"></i> 1小時40分</div></div>
-            <div class="spot-card" data-spot-name="太陽城王子大飯店"><div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div><div class="spot-content"><div class="spot-title">太陽城王子大飯店</div><div class="spot-notes-list" id="notes-sunshine"></div></div><div class="spot-image-container"><img src="https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&w=800&q=80" class="spot-image"></div></div>
+            
+            <!-- NEW SPOTS for 12/12 -->
+            <div class="spot-card" data-spot-name="澀谷">
+                <div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div>
+                <div class="spot-content" onclick="showDetail('shibuya')">
+                    <div class="spot-title">澀谷 <span class="info-icon-small">i</span></div>
+                    <div class="spot-notes-list" id="notes-shibuya"></div>
+                </div>
+                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
+            </div>
+            
+            <div class="spot-card" data-spot-name="新宿">
+                <div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div>
+                <div class="spot-content" onclick="showDetail('shinjuku')">
+                    <div class="spot-title">新宿 <span class="info-icon-small">i</span></div>
+                    <div class="spot-notes-list" id="notes-shinjuku"></div>
+                </div>
+                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
+            </div>
+            
+            <div class="spot-card" data-spot-name="太陽城王子大飯店"><div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div><div class="spot-content"><div class="spot-title">太陽城王子大飯店</div><div class="spot-notes-list" id="notes-sunshine"></div></div><div class="spot-image-container"><img src="https://d1grca2t3zpuug.cloudfront.net/2024/08/66ba0c4e47de3-870x500.webp" class="spot-image"></div></div>
             <div class="meal-card"><i class="fas fa-utensils"></i> <strong>晚餐：</strong> 方便逛街自理</div>
         </div>
 
-        <!-- DAY 4: UPDATED FOR 12/13 -->
+        <!-- Day 4 (12/13) -->
         <div id="day4" class="day-view">
             <div id="weather-d4"></div>
 
@@ -229,26 +208,26 @@
                     <div class="spot-notes-list" id="notes-shigekuni"></div>
                     <a href="https://www.google.com/maps/dir/Sunshine+City+Prince+Hotel/Shigekuni+Ebisu" target="_blank" class="tiny-nav-btn"><i class="fas fa-location-arrow"></i> 導航</a>
                 </div>
-                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
+                <div class="spot-image-container"><img src="https://magazine.hitosara.com/image/4074/MM_4074.jpg" class="spot-image"></div>
             </div>
 
             <!-- TIMETABLE: Ebisu -> Fujisawa -->
             <div class="timetable-card">
                 <div class="timetable-header"><i class="fas fa-train"></i> 交通：惠比壽 -> 藤澤 (約10:00出發)</div>
-                <div class="timetable-row">
-                    <div class="tt-time">10:06<span class="tt-arrow">→</span>10:56</div>
-                    <div class="tt-info"><span class="tt-type">JR 湘南新宿線 (快速)</span><span class="tt-sub">往小田原 / 直達最快</span></div>
-                    <div class="tt-price">¥990<span class="tt-tag tag-fast">推薦</span></div>
+                <div class="tt-grid-row">
+                    <div class="tt-time-group"><div class="tt-time">10:06 → 10:56</div><div class="tt-duration"><i class="far fa-clock"></i> 50分</div></div>
+                    <div class="tt-info-group"><div class="tt-train-name">湘南新宿線 (快速)</div><div class="tt-train-sub">直達 / 最快</div></div>
+                    <div class="tt-price-group"><div class="tt-price">¥990</div><div class="tt-tag tag-fast">推薦</div></div>
                 </div>
-                <div class="timetable-row">
-                    <div class="tt-time">10:21<span class="tt-arrow">→</span>11:15</div>
-                    <div class="tt-info"><span class="tt-type">JR 湘南新宿線 (普通)</span><span class="tt-sub">往逗子 / 直達</span></div>
-                    <div class="tt-price">¥990</div>
+                <div class="tt-grid-row">
+                    <div class="tt-time-group"><div class="tt-time">10:21 → 11:15</div><div class="tt-duration"><i class="far fa-clock"></i> 54分</div></div>
+                    <div class="tt-info-group"><div class="tt-train-name">湘南新宿線 (普通)</div><div class="tt-train-sub">直達</div></div>
+                    <div class="tt-price-group"><div class="tt-price">¥990</div></div>
                 </div>
-                <div class="timetable-row">
-                    <div class="tt-time">10:10<span class="tt-arrow">→</span>11:30</div>
-                    <div class="tt-info"><span class="tt-type">JR 山手線 + 小田急</span><span class="tt-sub">新宿轉車 / 時間長</span></div>
-                    <div class="tt-price">¥650<span class="tt-tag tag-cheap">省錢</span></div>
+                <div class="tt-grid-row">
+                    <div class="tt-time-group"><div class="tt-time">10:36 → 11:26</div><div class="tt-duration"><i class="far fa-clock"></i> 50分</div></div>
+                    <div class="tt-info-group"><div class="tt-train-name">湘南新宿線 (快速)</div><div class="tt-train-sub">直達</div></div>
+                    <div class="tt-price-group"><div class="tt-price">¥990</div></div>
                 </div>
             </div>
 
@@ -272,7 +251,7 @@
                     <div class="spot-title">江之島散策 <span class="info-icon-small">i</span></div>
                     <div class="spot-notes-list" id="notes-enoshima"></div>
                 </div>
-                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1545624037-715c86c017f3?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
+                <div class="spot-image-container"><img src="https://d1grca2t3zpuug.cloudfront.net/2022/03/enishimahoteltop.jpg" class="spot-image"></div>
             </div>
 
             <div class="travel-time-container"><div class="travel-line"></div><div class="travel-time-badge"><i class="fas fa-train"></i> 江之電 (復古電車)</div></div>
@@ -284,27 +263,47 @@
                     <div class="spot-title">鎌倉/長谷/大佛 <span class="info-icon-small">i</span></div>
                     <div class="spot-notes-list" id="notes-kamakura_daibutsu"></div>
                 </div>
-                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1598503055202-d9855514b5d0?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
+                <div class="spot-image-container"><img src="https://www.bring-you.info/imgs/2014/08/kamakura-travel-1.jpg" class="spot-image"></div>
             </div>
 
-            <!-- TIMETABLE: Return (16:00) -->
+            <!-- TIMETABLE: Return (17:00 Odakyu) -->
             <div class="timetable-card">
-                <div class="timetable-header"><i class="fas fa-train"></i> 返程：鎌倉 -> 新宿 (約16:00出發)</div>
-                <div class="timetable-row">
-                    <div class="tt-time">16:02<span class="tt-arrow">→</span>17:03</div>
-                    <div class="tt-info"><span class="tt-type">JR 湘南新宿線 (快速)</span><span class="tt-sub">直達 / 免轉車</span></div>
-                    <div class="tt-price">¥940<span class="tt-tag tag-fast">推薦</span></div>
+                <div class="timetable-header"><i class="fas fa-train"></i> 返程：藤澤 -> 新宿 (約17:00)</div>
+                <div class="tt-grid-row">
+                    <div class="tt-time-group"><div class="tt-time">17:04 → 18:08</div><div class="tt-duration"><i class="far fa-clock"></i> 1時04分</div></div>
+                    <div class="tt-info-group"><div class="tt-train-name">小田急 快速急行</div><div class="tt-train-sub">免特急費 / 最划算</div></div>
+                    <div class="tt-price-group"><div class="tt-price">¥600</div><div class="tt-tag tag-cheap">省錢</div></div>
                 </div>
-                <div class="timetable-row">
-                    <div class="tt-time">16:12<span class="tt-arrow">→</span>17:40</div>
-                    <div class="tt-info"><span class="tt-type">江之電 + 小田急</span><span class="tt-sub">藤澤轉車 / 較久</span></div>
-                    <div class="tt-price">¥800<span class="tt-tag tag-cheap">便宜</span></div>
+                <div class="tt-grid-row">
+                    <div class="tt-time-group"><div class="tt-time">17:16 → 18:18</div><div class="tt-duration"><i class="far fa-clock"></i> 1時02分</div></div>
+                    <div class="tt-info-group"><div class="tt-train-name">小田急 快速急行</div><div class="tt-train-sub">班次密集</div></div>
+                    <div class="tt-price-group"><div class="tt-price">¥600</div></div>
                 </div>
-                <div class="timetable-row">
-                    <div class="tt-time">16:10<span class="tt-arrow">→</span>17:15</div>
-                    <div class="tt-info"><span class="tt-type">JR 橫須賀線 + 湘南新宿</span><span class="tt-sub">戶塚轉車 / 備案</span></div>
-                    <div class="tt-price">¥940</div>
+                <div class="tt-grid-row">
+                    <div class="tt-time-group"><div class="tt-time">17:23 → 18:26</div><div class="tt-duration"><i class="far fa-clock"></i> 1時03分</div></div>
+                    <div class="tt-info-group"><div class="tt-train-name">浪漫特快 Hakone 22</div><div class="tt-train-sub">全車指定席 / 舒適</div></div>
+                    <div class="tt-price-group"><div class="tt-price">¥1,350</div><div class="tt-tag tag-fast">舒適</div></div>
                 </div>
+            </div>
+            
+            <!-- NEW: Ebisu (Night) -->
+            <div class="spot-card" data-spot-name="惠比壽">
+                <div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div>
+                <div class="spot-content" onclick="showDetail('ebisu_garden')">
+                    <div class="spot-title">惠比壽花園廣場 <span class="info-icon-small">i</span></div>
+                    <div class="spot-notes-list" id="notes-ebisu"></div>
+                </div>
+                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1570996688153-026f361516a1?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
+            </div>
+
+            <!-- NEW: Tokyo Station -->
+            <div class="spot-card" data-spot-name="東京車站">
+                <div class="spot-left"><div class="spot-location-text">東京</div><div class="spot-divider"></div></div>
+                <div class="spot-content" onclick="showDetail('tokyo_station')">
+                    <div class="spot-title">東京車站 <span class="info-icon-small">i</span></div>
+                    <div class="spot-notes-list" id="notes-tokyo_station"></div>
+                </div>
+                <div class="spot-image-container"><img src="https://images.unsplash.com/photo-1554797589-7241bb691973?auto=format&fit=crop&w=800&q=80" class="spot-image"></div>
             </div>
         </div>
 
@@ -325,7 +324,7 @@
                 <h3 style="margin:0 0 15px 0;" id="form-title">新增筆記</h3>
                 <div class="form-group"><label class="form-label">標題</label><input type="text" id="note-title" class="form-control" placeholder="例如：去買黑蛋"></div>
                 <div style="display:flex; gap:10px;">
-                    <div class="form-group" style="flex:1;"><label class="form-label">地點</label><select id="note-location" class="form-control"><option value="">-- 請選擇 --</option><option value="繁邦">繁邦</option><option value="江之島">江之島</option><option value="鎌倉大佛">鎌倉大佛</option><option value="大湧谷纜車">大湧谷纜車</option><option value="箱根天成園">箱根天成園</option><option value="箱根湯本商店街">箱根湯本商店街</option><option value="箱根神社">箱根神社</option><option value="大涌谷">大涌谷</option><option value="蘆之湖海盜船">蘆之湖海盜船</option><option value="西湖里根場">西湖里根場</option><option value="河口湖天晴號">河口湖天晴號</option><option value="新倉山淺間公園">新倉山淺間公園</option><option value="太陽城王子大飯店">太陽城王子大飯店</option><option value="其他">其他</option></select></div>
+                    <div class="form-group" style="flex:1;"><label class="form-label">地點</label><select id="note-location" class="form-control"><option value="">-- 請選擇 --</option><option value="繁邦">繁邦</option><option value="江之島">江之島</option><option value="鎌倉大佛">鎌倉大佛</option><option value="大湧谷纜車">大湧谷纜車</option><option value="箱根天成園">箱根天成園</option><option value="箱根湯本商店街">箱根湯本商店街</option><option value="箱根神社">箱根神社</option><option value="大涌谷">大涌谷</option><option value="蘆之湖海盜船">蘆之湖海盜船</option><option value="西湖里根場">西湖里根場</option><option value="河口湖天晴號">河口湖天晴號</option><option value="新倉山淺間公園">新倉山淺間公園</option><option value="太陽城王子大飯店">太陽城王子大飯店</option><option value="澀谷">澀谷</option><option value="新宿">新宿</option><option value="惠比壽">惠比壽</option><option value="東京車站">東京車站</option><option value="其他">其他</option></select></div>
                     <div class="form-group" style="flex:1;"><label class="form-label">分類</label><select id="note-category" class="form-control"><option value="eat">吃</option><option value="buy">買</option><option value="spot">景點</option><option value="todo">待辦</option></select></div>
                 </div>
                 <div class="form-group"><label class="form-label">連結/地圖</label><input type="text" id="note-map" class="form-control"></div>
@@ -619,17 +618,37 @@
         const attractionDetails = {
             'shigekuni': {
                 title: '繁邦 (Shigekuni)',
-                img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
+                img: 'https://magazine.hitosara.com/image/4074/MM_4074.jpg',
                 content: '<p><strong>人氣早餐推薦</strong><br>位於惠比壽的人氣烘焙坊餐廳。最著名的是厚切吐司與新鮮出爐的麵包。<br>建議提早排隊以免久候。</p><p><strong>必點：</strong>厚切吐司套餐、時令湯品</p>'
+            },
+            'shibuya': {
+                title: '澀谷 (Shibuya)',
+                img: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>東京最繁華的十字路口，擁有SHIBUYA SKY展望台、八公像與無數潮流店鋪。</p><p><strong>必去：</strong>SHIBUYA SKY、宮下公園</p>'
+            },
+            'shinjuku': {
+                title: '新宿 (Shinjuku)',
+                img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>購物與夜生活的中心。擁有歌舞伎町、新宿御苑以及各大百貨公司。</p><p><strong>必逛：</strong>伊勢丹、Lumine、歌舞伎町一番街</p>'
+            },
+            'ebisu_garden': {
+                title: '惠比壽花園廣場',
+                img: 'https://images.unsplash.com/photo-1570996688153-026f361516a1?auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>充滿歐洲風情的紅磚建築群，冬季會有著名的水晶燈飾展，非常浪漫。</p><p><strong>必看：</strong>Baccarat 水晶燈</p>'
+            },
+            'tokyo_station': {
+                title: '東京車站 (Tokyo Station)',
+                img: 'https://images.unsplash.com/photo-1554797589-7241bb691973?auto=format&fit=crop&w=800&q=80',
+                content: '<p><strong>景點介紹</strong><br>這座紅磚建築是東京的象徵。車站內的「東京一番街」聚集了拉麵街與動漫周邊店。</p><p><strong>必買：</strong>NewYork Perfect Cheese、Press Butter Sand</p>'
             },
             'enoshima': {
                 title: '江之島 (Enoshima)',
-                img: 'https://images.unsplash.com/photo-1545624037-715c86c017f3?auto=format&fit=crop&w=800&q=80',
+                img: 'https://d1grca2t3zpuug.cloudfront.net/2022/03/enishimahoteltop.jpg',
                 content: '<p><strong>景點介紹</strong><br>湘南海岸的代表性景點。島上有江島神社、展望燈塔以及熱鬧的參道商店街。</p><p><strong>必吃：</strong>吻仔魚丼、章魚仙貝</p>'
             },
             'kamakura_daibutsu': {
                 title: '鎌倉大佛 (高德院)',
-                img: 'https://images.unsplash.com/photo-1598503055202-d9855514b5d0?auto=format&fit=crop&w=800&q=80',
+                img: 'https://www.bring-you.info/imgs/2014/08/kamakura-travel-1.jpg',
                 content: '<p><strong>景點介紹</strong><br>日本三大佛之一的國寶銅造阿彌陀如來坐像。與奈良大佛不同，鎌倉大佛是露天供奉的，非常壯觀。</p><p><strong>周邊：</strong>長谷寺 (以紫陽花與觀音像聞名)</p>'
             },
             'ropeway': { 
@@ -664,12 +683,12 @@
             },
             'saiko': { 
                 title: '西湖里根場', 
-                img: 'https://images.unsplash.com/photo-1579758782390-3490b4d4554f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                img: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res70/490000/490485-lake-saiko-iyashi-no-sato-nenba.jpg',
                 content: '<p><strong>景點介紹</strong><br>里根場保存數十棟茅草屋，是富士山周邊最具日本古村氛圍的景點之一。漫步在茅葺屋與山景之間，能感受昔日農家生活風貌。部分屋舍展示手工藝及拍照空間，也能眺望富士山。園區安靜悠閒，非常適合喜歡傳統建築與清幽氣氛的旅客。</p><p><strong>必吃：</strong>甲州餺飥（ほうとう）<br><strong>必買：</strong>富士山羊羹、傳統工藝品</p>' 
             },
             'appare': { 
                 title: '河口湖天晴號', 
-                img: 'https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                img: 'https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1280,h_850/w_79,x_14,y_14,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/kffhopbnc8toztxlsekv/%E5%AF%8C%E5%A3%AB%E5%B1%B1%E6%B2%B3%E5%8F%A3%E6%B9%96%E5%A4%A7%E7%9F%B3%E5%85%AC%E5%9C%92%E5%9C%B0%E9%9C%87%E9%AB%94%E9%A9%97%E9%A4%A8%E5%A4%A9%E6%99%B4%E6%AD%A6%E5%B0%87%E8%88%B9%E7%B6%B2%E7%B4%85%E9%BA%A5%E7%95%B6%E5%8B%9E%E4%B8%80%E6%97%A5%E9%81%8A%EF%BC%88%E5%90%AB%E5%8D%88%E9%A4%90%EF%BC%89%EF%BD%9C4~9%E4%BA%BA%E7%B2%BE%E5%93%81%E5%B0%8F%E5%9C%98.webp',
                 content: '<p><strong>景點介紹</strong><br>天晴號是河口湖人氣遊覽船，船身復古可愛，航程中能近距離欣賞富士山倒映在湖面的風景。湖面寬闊、視野無遮蔽，是初訪河口湖時最推薦的拍照方式。無論晴天或雲霧都有不同氛圍，航程輕鬆舒適，適合作為富士山行程的開場或收尾。</p><p><strong>必吃：</strong>湖畔甜點、葡萄/桃冰品<br><strong>必買：</strong>富士山禮盒點心、湖景明信片<br>Lake Bake Cafe、Lake Side Cafe Ku</p>' 
             },
             'chureito': { 
@@ -686,16 +705,6 @@
         
         function showDetail(key) { const data = attractionDetails[key]; if(data) { document.getElementById('modal-title').innerText = data.title; document.getElementById('modal-img-placeholder').innerHTML = `<img src="${data.img}" class="modal-hero-img">`; document.getElementById('modal-body').innerHTML = data.content; document.getElementById('detail-modal').classList.add('active'); } }
         function showUserNoteDetail(n) { document.getElementById('modal-title').innerText = n.title; document.getElementById('modal-img-placeholder').innerHTML = ''; let html = `<p><strong>地點：</strong>${n.location}</p>`; if(n.desc) html += `<p>${n.desc}</p>`; if(n.imgData) html += `<img src="${n.imgData}" style="width:100%; border-radius:10px;">`; if(n.map) html += `<a href="${n.map}" target="_blank" class="btn-action btn-blue" style="display:block;margin-top:10px;">開啟導航</a>`; document.getElementById('modal-body').innerHTML = html; document.getElementById('detail-modal').classList.add('active'); }
-        function showExpenseDetail(e) {
-            document.getElementById('modal-title').innerText = "電子收據";
-            let methodText = {cash:'現金', card:'信用卡', suica:'Suica'}[e.method];
-            let catText = {eat:'飲食',buy:'購物',transport:'交通',spot:'景點',other:'其他'}[e.category];
-            let html = `<div class="receipt-header"><div style="font-size:1.2rem; font-weight:bold; color:#333;">${e.title}</div><div class="receipt-total">${e.currency} ${e.amount.toLocaleString()}</div></div><div class="receipt-row"><span class="receipt-label">日期</span><span>${e.date}</span></div><div class="receipt-row"><span class="receipt-label">分類</span><span>${catText}</span></div><div class="receipt-row"><span class="receipt-label">支付方式</span><span>${methodText}</span></div><div class="receipt-row" style="border-bottom:1px solid #eee; padding-bottom:10px;"><span class="receipt-label">備註</span><span>${e.note || '無'}</span></div>`;
-            document.getElementById('modal-img-placeholder').innerHTML = '';
-            document.getElementById('modal-body').innerHTML = html;
-            document.getElementById('detail-modal').classList.add('active');
-        }
-
         function closeModal(e) { if(e) e.preventDefault(); document.getElementById('detail-modal').classList.remove('active'); }
         function switchTab(id, el) { document.querySelectorAll('.tab-content').forEach(d=>d.classList.remove('active')); document.getElementById('tab-'+id).classList.add('active'); document.querySelectorAll('.nav-item').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); if(id==='itinerary') document.getElementById('date-nav-container').style.display='flex'; else document.getElementById('date-nav-container').style.display='none'; window.scrollTo(0,0); }
         function switchDay(id, el) { document.querySelectorAll('.day-view').forEach(d=>d.classList.remove('active')); document.getElementById(id).classList.add('active'); document.querySelectorAll('.date-item').forEach(d=>d.classList.remove('active')); if(el) el.classList.add('active'); window.scrollTo(0,0); }
